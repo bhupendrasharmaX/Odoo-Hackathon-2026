@@ -1,0 +1,18 @@
+# SQLite executables
+sqlite3.exe
+sqlite3_analyzer.exe
+sqlite3_rsync.exe
+sqldiff.exe
+
+# SQLite database
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# VS Code
+.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store
