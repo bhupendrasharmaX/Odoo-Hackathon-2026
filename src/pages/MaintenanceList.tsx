@@ -50,27 +50,33 @@ export default function MaintenanceList() {
     }
   });
 
-  const onSubmit = (data: MntFields) => {
-    const v = vehicles.find(item => item.id === data.vehicleId);
-    const newRecord: Maintenance = {
-      id: `MNT-${500 + records.length + 1}`,
-      vehicleId: data.vehicleId,
-      vehicleName: v ? v.name : 'Unknown Vehicle',
-      type: data.type,
-      description: data.description,
-      priority: data.priority,
-      status: 'Scheduled',
-      scheduledDate: data.scheduledDate,
-      estimatedCost: data.estimatedCost,
-      mechanic: data.mechanic,
-    };
-    setRecords([newRecord, ...records]);
-    setSuccess(true);
-    setTimeout(() => {
-      setSuccess(false);
-      setShowCreateModal(false);
-      reset();
-    }, 1200);
+  const onSubmit = async (data: MntFields) => {
+    try {
+      const v = vehicles.find(item => item.id === data.vehicleId);
+      const payload = {
+        vehicleId: data.vehicleId,
+        vehicleName: v ? v.name : 'Unknown Vehicle',
+        type: data.type,
+        description: data.description,
+        priority: data.priority,
+        status: 'Scheduled',
+        scheduledDate: data.scheduledDate,
+        estimatedCost: data.estimatedCost,
+        mechanic: data.mechanic,
+      };
+      
+      const newRecord = await api.maintenance.create(payload);
+      setRecords([newRecord, ...records]);
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        setShowCreateModal(false);
+        reset();
+      }, 1200);
+    } catch (err) {
+      console.error('Failed to create maintenance record:', err);
+      alert('Error saving maintenance record to database');
+    }
   };
 
   const filteredRecords = records.filter(rec => {

@@ -51,25 +51,31 @@ export default function ExpenseList() {
     }
   });
 
-  const onSubmit = (data: ExpenseFields) => {
-    const v = vehicles.find(item => item.id === data.vehicleId);
-    const newExp: Expense = {
-      id: `EXP-${2000 + expenseList.length + 1}`,
-      date: data.date,
-      category: data.category,
-      description: data.description,
-      vehicleId: data.vehicleId,
-      vehicleName: v ? v.name : undefined,
-      amount: data.amount,
-      status: 'Pending',
-    };
-    setExpenseList([newExp, ...expenseList]);
-    setSuccess(true);
-    setTimeout(() => {
-      setSuccess(false);
-      setShowModal(false);
-      reset();
-    }, 1200);
+  const onSubmit = async (data: ExpenseFields) => {
+    try {
+      const v = vehicles.find(item => item.id === data.vehicleId);
+      const payload = {
+        date: data.date,
+        category: data.category,
+        description: data.description,
+        vehicleId: data.vehicleId,
+        vehicleName: v ? v.name : undefined,
+        amount: data.amount,
+        status: 'Pending',
+      };
+      
+      const newExp = await api.expenses.create(payload);
+      setExpenseList([newExp, ...expenseList]);
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        setShowModal(false);
+        reset();
+      }, 1200);
+    } catch (err) {
+      console.error('Failed to create expense:', err);
+      alert('Error saving expense to database');
+    }
   };
 
   const filteredExpenses = expenseList.filter(exp => {

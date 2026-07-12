@@ -54,28 +54,33 @@ export default function FuelList() {
   const rate = watch('costPerLiter') || 0;
   const totalCostVal = qty * rate;
 
-  const onSubmit = (data: FuelFields) => {
-    const v = vehicles.find(item => item.id === data.vehicleId);
-    const newLog: FuelLog = {
-      id: `FL-${1000 + logs.length + 1}`,
-      vehicleId: data.vehicleId,
-      vehicleName: v ? v.name : 'Unknown',
-      driverName: data.driverName,
-      date: data.date,
-      fuelType: data.fuelType,
-      quantity: data.quantity,
-      costPerLiter: data.costPerLiter,
-      totalCost: data.quantity * data.costPerLiter,
-      odometer: data.odometer,
-      station: data.station,
-    };
-    setLogs([newLog, ...logs]);
-    setSuccess(true);
-    setTimeout(() => {
-      setSuccess(false);
-      setShowModal(false);
-      reset();
-    }, 1200);
+  const onSubmit = async (data: FuelFields) => {
+    try {
+      const v = vehicles.find(item => item.id === data.vehicleId);
+      const payload = {
+        vehicleId: data.vehicleId,
+        driverName: data.driverName,
+        date: data.date,
+        fuelType: data.fuelType,
+        quantity: data.quantity,
+        costPerLiter: data.costPerLiter,
+        totalCost: data.quantity * data.costPerLiter,
+        odometer: data.odometer,
+        station: data.station,
+      };
+      
+      const newLog = await api.fuel.create(payload);
+      setLogs([newLog, ...logs]);
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        setShowModal(false);
+        reset();
+      }, 1200);
+    } catch (err) {
+      console.error('Failed to create fuel log:', err);
+      alert('Error saving fuel log to database');
+    }
   };
 
   const filteredLogs = logs.filter(log => {

@@ -8,6 +8,7 @@ import {
   User, DollarSign, Package, Compass, Layers 
 } from 'lucide-react';
 import { vehicles, drivers } from '../data/mockData';
+import { api } from '../lib/api';
 
 const step1Schema = zod.object({
   source: zod.string().min(3, 'Source location is required'),
@@ -58,11 +59,17 @@ export default function TripCreate() {
     setStep(4);
   };
 
-  const handleDispatch = () => {
-    setSuccess(true);
-    setTimeout(() => {
-      navigate('/trips');
-    }, 1500);
+  const handleDispatch = async () => {
+    try {
+      await api.trips.create(tripData);
+      setSuccess(true);
+      setTimeout(() => {
+        navigate('/trips');
+      }, 1500);
+    } catch (err) {
+      console.error('Failed to create trip:', err);
+      alert('Error saving trip to database');
+    }
   };
 
   const selectedVehicle = vehicles.find(v => v.id === tripData.vehicleId);

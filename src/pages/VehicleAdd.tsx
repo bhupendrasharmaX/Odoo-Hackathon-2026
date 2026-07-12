@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
 import { ArrowLeft, UploadCloud, FileText, CheckCircle, X } from 'lucide-react';
+import { api } from '../lib/api';
 
 const vehicleSchema = zod.object({
   registrationNumber: zod.string().min(4, 'Registration number is required'),
@@ -98,12 +99,17 @@ export default function VehicleAdd() {
     }
   };
 
-  const onSubmit = (data: VehicleFields) => {
-    console.log('New Vehicle Submitted:', data, 'Photo:', uploadedFile);
-    setSuccess(true);
-    setTimeout(() => {
-      navigate('/vehicles');
-    }, 1500);
+  const onSubmit = async (data: VehicleFields) => {
+    try {
+      await api.vehicles.create(data);
+      setSuccess(true);
+      setTimeout(() => {
+        navigate('/vehicles');
+      }, 1500);
+    } catch (err) {
+      console.error('Failed to create vehicle:', err);
+      alert('Error saving vehicle to database');
+    }
   };
 
   return (

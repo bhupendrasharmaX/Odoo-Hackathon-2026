@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
 import { ArrowLeft, UploadCloud, CheckCircle, X } from 'lucide-react';
+import { api } from '../lib/api';
 
 const driverSchema = zod.object({
   name: zod.string().min(2, 'Name is required'),
@@ -87,12 +88,17 @@ export default function DriverAdd() {
     }
   };
 
-  const onSubmit = (data: DriverFields) => {
-    console.log('Driver Saved:', data, 'Document:', uploadedFile);
-    setSuccess(true);
-    setTimeout(() => {
-      navigate('/drivers');
-    }, 1500);
+  const onSubmit = async (data: DriverFields) => {
+    try {
+      await api.drivers.create(data);
+      setSuccess(true);
+      setTimeout(() => {
+        navigate('/drivers');
+      }, 1500);
+    } catch (err) {
+      console.error('Failed to create driver:', err);
+      alert('Error saving driver to database');
+    }
   };
 
   return (
