@@ -119,7 +119,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface p-4">
-      <div className="w-full max-w-md bg-white rounded-3xl border border-outline-variant/60 shadow-xl p-8 relative overflow-hidden">
+      <div className="w-full max-w-md bg-surface-container-lowest rounded-3xl border border-outline-variant/60 shadow-xl p-8 relative overflow-hidden">
         {/* Background Decorative Gradient */}
         <div className="absolute -right-16 -top-16 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
         <div className="absolute -left-16 -bottom-16 w-32 h-32 bg-secondary/5 rounded-full blur-2xl"></div>
@@ -140,7 +140,7 @@ export default function Login() {
             type="button"
             onClick={() => { setActiveTab('email'); setErrorMessage(''); }}
             className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all ${
-              activeTab === 'email' ? 'bg-white text-primary shadow-xs' : 'text-on-surface-variant hover:text-on-surface'
+              activeTab === 'email' ? 'bg-surface-container-lowest text-primary shadow-xs' : 'text-on-surface-variant hover:text-on-surface'
             }`}
           >
             Email & Password
@@ -149,7 +149,7 @@ export default function Login() {
             type="button"
             onClick={() => { setActiveTab('phone'); setErrorMessage(''); }}
             className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all ${
-              activeTab === 'phone' ? 'bg-white text-primary shadow-xs' : 'text-on-surface-variant hover:text-on-surface'
+              activeTab === 'phone' ? 'bg-surface-container-lowest text-primary shadow-xs' : 'text-on-surface-variant hover:text-on-surface'
             }`}
           >
             Mobile & OTP

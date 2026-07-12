@@ -49,7 +49,7 @@ export default function VehicleAdd() {
       <div className="flex items-center gap-4">
         <button 
           onClick={() => navigate('/vehicles')}
-          className="p-2 rounded-xl border border-outline-variant bg-white text-on-surface-variant hover:text-primary transition-colors"
+          className="p-2 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
@@ -70,7 +70,7 @@ export default function VehicleAdd() {
         {/* Left Columns: Form Fields */}
         <div className="lg:col-span-2 space-y-6">
           {/* General Information Card */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Vehicle Information</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -147,7 +147,7 @@ export default function VehicleAdd() {
           </div>
 
           {/* Financial & Status Card */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Financial & Status</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -202,7 +202,7 @@ export default function VehicleAdd() {
         {/* Right Column: Image and Actions */}
         <div className="space-y-6">
           {/* Image Upload Card */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Vehicle Photo</h3>
             
             <div className="border-2 border-dashed border-outline-variant rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary/50 transition-colors">
@@ -213,7 +213,7 @@ export default function VehicleAdd() {
           </div>
 
           {/* Form Actions */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-3">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-3">
             <button
               type="submit"
               className="w-full bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors shadow-xs"
@@ -223,7 +223,7 @@ export default function VehicleAdd() {
             <button
               type="button"
               onClick={() => navigate('/vehicles')}
-              className="w-full bg-white border border-outline-variant text-on-surface py-3 rounded-xl font-medium hover:bg-surface-container-low transition-colors"
+              className="w-full bg-surface-container-lowest border border-outline-variant text-on-surface py-3 rounded-xl font-medium hover:bg-surface-container-low transition-colors"
             >
               Cancel
             </button>

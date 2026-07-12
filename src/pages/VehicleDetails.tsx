@@ -39,7 +39,7 @@ export default function VehicleDetails() {
         <div className="flex items-center gap-4">
           <button 
             onClick={() => navigate('/vehicles')}
-            className="p-2 rounded-xl border border-outline-variant bg-white text-on-surface-variant hover:text-primary transition-colors"
+            className="p-2 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -57,7 +57,7 @@ export default function VehicleDetails() {
         <div className="flex gap-2">
           <button 
             onClick={() => alert('Edit Vehicle logic')}
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-white border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs"
+            className="flex items-center gap-1.5 px-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs"
           >
             <Edit className="w-4 h-4 text-on-surface-variant" /> Edit
           </button>
@@ -97,7 +97,7 @@ export default function VehicleDetails() {
           {/* Details column */}
           <div className="lg:col-span-2 space-y-6">
             {/* Specs Card */}
-            <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs">
+            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs">
               <h3 className="font-bold text-on-surface text-base mb-4 flex items-center gap-2">
                 <Info className="w-4 h-4 text-primary" /> Technical Specifications
               </h3>
@@ -130,7 +130,7 @@ export default function VehicleDetails() {
             </div>
 
             {/* Timeline Card */}
-            <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs">
+            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs">
               <h3 className="font-bold text-on-surface text-base mb-4 flex items-center gap-2">
                 <Clock className="w-4 h-4 text-primary" /> Vehicle Timeline
               </h3>
@@ -159,7 +159,7 @@ export default function VehicleDetails() {
 
           {/* Stats column */}
           <div className="space-y-6">
-            <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
+            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
               <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Financial Performance</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
@@ -185,7 +185,7 @@ export default function VehicleDetails() {
               </div>
             </div>
 
-            <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs text-center space-y-2">
+            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs text-center space-y-2">
               <span className="text-xs text-on-surface-variant uppercase tracking-wider block font-semibold">Odometer Benchmark</span>
               <div className="text-3xl font-black text-primary">{formatNumber(vehicle.odometer)} km</div>
               <p className="text-xs text-on-surface-variant">Last updated on Jul 12, 2026</p>
@@ -196,7 +196,7 @@ export default function VehicleDetails() {
 
       {/* Trips list tab */}
       {activeTab === 'trips' && (
-        <div className="bg-white border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden animate-fade-in">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden animate-fade-in">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -236,7 +236,7 @@ export default function VehicleDetails() {
 
       {/* Fuel logs tab */}
       {activeTab === 'fuel' && (
-        <div className="bg-white border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden animate-fade-in">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden animate-fade-in">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -274,7 +274,7 @@ export default function VehicleDetails() {
 
       {/* Maintenance tab */}
       {activeTab === 'maintenance' && (
-        <div className="bg-white border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden animate-fade-in">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden animate-fade-in">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -322,7 +322,7 @@ export default function VehicleDetails() {
 
       {/* Expenses tab */}
       {activeTab === 'expenses' && (
-        <div className="bg-white border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden animate-fade-in">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden animate-fade-in">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>

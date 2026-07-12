@@ -52,7 +52,7 @@ export default function SettingsPage() {
         {/* Settings categories */}
         <div className="lg:col-span-2 space-y-6">
           {/* Notification Preferences */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <Bell className="w-5 h-5 text-primary" /> Notification Preferences
             </h3>
@@ -111,7 +111,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Role Management Card */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <Users className="w-5 h-5 text-primary" /> Role & Permissions Management
             </h3>
@@ -154,7 +154,7 @@ export default function SettingsPage() {
         {/* Security Column */}
         <div className="space-y-6">
           {/* Security & Access Card */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" /> Security & Session
             </h3>
@@ -175,7 +175,7 @@ export default function SettingsPage() {
                 <select
                   value={security.sessionTimeout}
                   onChange={(e) => setSecurity({ ...security, sessionTimeout: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                 >
                   <option value="15m">15 Minutes</option>
                   <option value="30m">30 Minutes</option>
@@ -187,7 +187,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Active Sessions */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Active Operations Sessions</h3>
             <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3">

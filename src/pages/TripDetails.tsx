@@ -38,7 +38,7 @@ export default function TripDetails() {
         <div className="flex items-center gap-4">
           <button 
             onClick={() => navigate('/trips')}
-            className="p-2 rounded-xl border border-outline-variant bg-white text-on-surface-variant hover:text-primary transition-colors"
+            className="p-2 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -54,7 +54,7 @@ export default function TripDetails() {
         </div>
 
         <div className="flex gap-2">
-          <button className="flex items-center gap-1.5 px-4 py-2.5 bg-white border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs">
+          <button className="flex items-center gap-1.5 px-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs">
             <Printer className="w-4 h-4 text-on-surface-variant" /> Print waybill
           </button>
           {trip.status !== 'Completed' && (
@@ -69,7 +69,7 @@ export default function TripDetails() {
       </div>
 
       {/* Horizontal timeline stepper */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs">
         <h3 className="font-bold text-on-surface text-sm uppercase tracking-wider text-on-surface-variant mb-6">Shipment Timeline Status</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative">
           {steps.map((st, idx) => (
@@ -88,7 +88,7 @@ export default function TripDetails() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Route Details Card */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5 lg:col-span-2">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5 lg:col-span-2">
           <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
             <Compass className="w-5 h-5 text-primary" /> Route details
           </h3>
@@ -134,7 +134,7 @@ export default function TripDetails() {
 
         {/* Assigned Drivers / Vehicles */}
         <div className="space-y-6">
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs space-y-4">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Operational Assignments</h3>
             
             <div className="flex items-center gap-3">

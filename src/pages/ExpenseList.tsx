@@ -109,22 +109,22 @@ export default function ExpenseList() {
 
       {/* KPI Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
           <span className="text-xs text-on-surface-variant uppercase tracking-wider block font-semibold">Total Expenses MTD</span>
           <div className="text-2xl font-black text-on-surface mt-2">{formatCurrency(845000)}</div>
           <span className="text-[10px] text-red-650 font-semibold block mt-1">+12.3% vs last period</span>
         </div>
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
           <span className="text-xs text-on-surface-variant uppercase tracking-wider block font-semibold">Average / Vehicle</span>
           <div className="text-2xl font-black text-on-surface mt-2">{formatCurrency(24142)}</div>
           <span className="text-[10px] text-on-surface-variant block mt-1">Based on active fleet</span>
         </div>
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
           <span className="text-xs text-on-surface-variant uppercase tracking-wider block font-semibold">Pending Approvals</span>
           <div className="text-2xl font-black text-amber-600 mt-2">12 Entries</div>
           <span className="text-[10px] text-on-surface-variant block mt-1">Needs review soon</span>
         </div>
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
           <span className="text-xs text-on-surface-variant uppercase tracking-wider block font-semibold">Budget Utilization</span>
           <div className="text-2xl font-black text-green-600 mt-2">68% Used</div>
           <div className="h-1 bg-surface-container-high rounded-full overflow-hidden mt-2">
@@ -136,7 +136,7 @@ export default function ExpenseList() {
       {/* Dual Charts side by side */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Donut Chart Category Breakdown */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col h-[340px] lg:col-span-1">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col h-[340px] lg:col-span-1">
           <h3 className="font-bold text-on-surface text-base mb-2">Category Breakdown</h3>
           <div className="flex-1 min-h-0 relative flex items-center justify-center">
             <ResponsiveContainer width="100%" height="100%">
@@ -162,7 +162,7 @@ export default function ExpenseList() {
         </div>
 
         {/* Expense Trend Chart */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col h-[340px] lg:col-span-2">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col h-[340px] lg:col-span-2">
           <h3 className="font-bold text-on-surface text-base mb-2">Monthly Expense Trend</h3>
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
@@ -179,7 +179,7 @@ export default function ExpenseList() {
       </div>
 
       {/* Filter Options */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-3 w-4 h-4 text-outline" />
           <input
@@ -195,7 +195,7 @@ export default function ExpenseList() {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
           >
             <option value="All">All Categories</option>
             <option value="Fuel">Fuel</option>
@@ -211,7 +211,7 @@ export default function ExpenseList() {
       </div>
 
       {/* Expenses Table Card */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -264,9 +264,9 @@ export default function ExpenseList() {
       {/* Record New Expense Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-3xl border border-outline-variant max-w-xl w-full p-6 shadow-2xl relative overflow-hidden animate-scale-in">
+          <div className="bg-surface-container-lowest rounded-3xl border border-outline-variant max-w-xl w-full p-6 shadow-2xl relative overflow-hidden animate-scale-in">
             {success && (
-              <div className="absolute inset-0 bg-white/95 flex flex-col items-center justify-center z-20">
+              <div className="absolute inset-0 bg-surface-container-lowest/95 flex flex-col items-center justify-center z-20">
                 <CheckCircle className="w-12 h-12 text-green-600 animate-bounce mb-3" />
                 <span className="font-bold text-on-surface">Expense log created successfully!</span>
               </div>
@@ -283,7 +283,7 @@ export default function ExpenseList() {
                   <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1.5">Category *</label>
                   <select 
                     {...register('category')}
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   >
                     <option value="Fuel">Fuel</option>
                     <option value="Maintenance">Maintenance</option>
@@ -301,7 +301,7 @@ export default function ExpenseList() {
                   <input 
                     {...register('amount', { valueAsNumber: true })}
                     type="number"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                   {errors.amount && <p className="text-xs text-error mt-0.5">{errors.amount.message}</p>}
                 </div>
@@ -313,7 +313,7 @@ export default function ExpenseList() {
                   <input 
                     {...register('date')}
                     type="date"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                 </div>
 
@@ -321,7 +321,7 @@ export default function ExpenseList() {
                   <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1.5">Select Vehicle (Optional)</label>
                   <select 
                     {...register('vehicleId')}
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   >
                     <option value="">No Vehicle association</option>
                     {vehicles.map(v => (
@@ -337,7 +337,7 @@ export default function ExpenseList() {
                   {...register('description')}
                   type="text"
                   placeholder="e.g. Expressway Toll fees"
-                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                 />
                 {errors.description && <p className="text-xs text-error mt-0.5">{errors.description.message}</p>}
               </div>
@@ -346,7 +346,7 @@ export default function ExpenseList() {
                 <button type="submit" className="flex-1 bg-primary text-white py-2.5 rounded-xl font-medium hover:bg-primary/95 transition-colors">
                   Submit Expense
                 </button>
-                <button type="button" onClick={() => setShowModal(false)} className="flex-1 bg-white border border-outline-variant text-on-surface py-2.5 rounded-xl font-medium hover:bg-surface-container-low transition-colors">
+                <button type="button" onClick={() => setShowModal(false)} className="flex-1 bg-surface-container-lowest border border-outline-variant text-on-surface py-2.5 rounded-xl font-medium hover:bg-surface-container-low transition-colors">
                   Cancel
                 </button>
               </div>

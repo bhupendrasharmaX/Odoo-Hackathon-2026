@@ -77,7 +77,7 @@ export default function TripCreate() {
             if (step > 1) setStep(step - 1);
             else navigate('/trips');
           }}
-          className="p-2 rounded-xl border border-outline-variant bg-white text-on-surface-variant hover:text-primary transition-colors"
+          className="p-2 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
@@ -88,7 +88,7 @@ export default function TripCreate() {
       </div>
 
       {/* Stepper Progress Bar */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex justify-between items-center gap-2 max-w-3xl mx-auto">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex justify-between items-center gap-2 max-w-3xl mx-auto">
         {[
           { num: 1, label: 'Route' },
           { num: 2, label: 'Assets' },
@@ -117,7 +117,7 @@ export default function TripCreate() {
       {/* Wizard Steps */}
       <div className="max-w-2xl mx-auto">
         {step === 1 && (
-          <form onSubmit={val1(nextStep1)} className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5 animate-fade-in">
+          <form onSubmit={val1(nextStep1)} className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5 animate-fade-in">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <MapPin className="w-5 h-5 text-primary" /> Define Shipment Route
             </h3>
@@ -153,7 +153,7 @@ export default function TripCreate() {
         )}
 
         {step === 2 && (
-          <form onSubmit={val2(nextStep2)} className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5 animate-fade-in">
+          <form onSubmit={val2(nextStep2)} className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5 animate-fade-in">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <Truck className="w-5 h-5 text-primary" /> Assign Fleet Assets
             </h3>
@@ -195,7 +195,7 @@ export default function TripCreate() {
         )}
 
         {step === 3 && (
-          <form onSubmit={val3(nextStep3)} className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5 animate-fade-in">
+          <form onSubmit={val3(nextStep3)} className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5 animate-fade-in">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <Package className="w-5 h-5 text-primary" /> Cargo & Billing Details
             </h3>
@@ -254,7 +254,7 @@ export default function TripCreate() {
         )}
 
         {step === 4 && (
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-6 animate-fade-in">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-6 animate-fade-in">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <Layers className="w-5 h-5 text-primary" /> Review Dispatch Sheet
             </h3>

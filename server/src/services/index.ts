@@ -9,3 +9,4 @@ export { fuelService } from './fuel.service.js';
 export { expenseService } from './expense.service.js';
 export { reportService } from './report.service.js';
 export { auditService } from './audit.service.js';
+export { notificationService } from './notification.service.js';

@@ -53,13 +53,13 @@ export default function Dashboard() {
         <div className="flex flex-wrap gap-2">
           <button 
             onClick={() => navigate('/vehicles/add')}
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-white border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs"
+            className="flex items-center gap-1.5 px-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs"
           >
             <Plus className="w-4 h-4 text-on-surface-variant" /> Add Vehicle
           </button>
           <button 
             onClick={() => navigate('/drivers/add')}
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-white border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs"
+            className="flex items-center gap-1.5 px-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs"
           >
             <Plus className="w-4 h-4 text-on-surface-variant" /> Add Driver
           </button>
@@ -75,7 +75,7 @@ export default function Dashboard() {
       {/* KPI Bento Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {kpis.map((kpi, idx) => (
-          <div key={idx} className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs relative overflow-hidden group">
+          <div key={idx} className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs relative overflow-hidden group">
             <div className="flex justify-between items-start">
               <span className="text-xs font-semibold text-on-surface-variant tracking-wider uppercase">{kpi.label}</span>
               <div className={`p-2 rounded-xl ${kpi.color}`}>
@@ -93,7 +93,7 @@ export default function Dashboard() {
       {/* Financial Overview Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Fleet Utilization Card */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
           <div className="flex justify-between items-center">
             <span className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Fleet Utilization</span>
             <span className="text-sm font-bold text-primary">{stats.fleetUtilization}%</span>
@@ -107,7 +107,7 @@ export default function Dashboard() {
         </div>
 
         {/* Monthly Revenue Card */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
           <div className="flex justify-between items-start">
             <div>
               <span className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Monthly Revenue</span>
@@ -121,7 +121,7 @@ export default function Dashboard() {
         </div>
 
         {/* Cost Summary Box Card */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
           <span className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider block mb-3">Operating Expenses</span>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-3">
@@ -149,7 +149,7 @@ export default function Dashboard() {
       {/* Charts Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Revenue vs Expenses */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs lg:col-span-2 flex flex-col h-[360px]">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs lg:col-span-2 flex flex-col h-[360px]">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-bold text-on-surface text-base">Revenue vs Expenses</h3>
             <span className="text-xs text-on-surface-variant">Last 7 months</span>
@@ -180,7 +180,7 @@ export default function Dashboard() {
         </div>
 
         {/* Fleet Status Donut */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col h-[360px]">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col h-[360px]">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-bold text-on-surface text-base">Fleet Status</h3>
             <span className="text-xs text-on-surface-variant">Total: 348 Vehicles</span>
@@ -216,7 +216,7 @@ export default function Dashboard() {
       {/* Grid of Tables */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Trips */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-bold text-on-surface text-base">Recent Trips</h3>
             <button onClick={() => navigate('/trips')} className="text-xs text-primary hover:underline font-semibold flex items-center gap-0.5">
@@ -258,7 +258,7 @@ export default function Dashboard() {
         </div>
 
         {/* Upcoming Maintenance */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-bold text-on-surface text-base">Upcoming Maintenance</h3>
             <button onClick={() => navigate('/maintenance')} className="text-xs text-primary hover:underline font-semibold flex items-center gap-0.5">
@@ -301,7 +301,7 @@ export default function Dashboard() {
       </div>
 
       {/* Fuel Logs Section (Enhancement from Phase 4) */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-bold text-on-surface text-base">Recent Fuel Transactions</h3>
           <button onClick={() => navigate('/fuel')} className="text-xs text-primary hover:underline font-semibold flex items-center gap-0.5">

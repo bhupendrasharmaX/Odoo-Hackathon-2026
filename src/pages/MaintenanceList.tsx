@@ -99,7 +99,7 @@ export default function MaintenanceList() {
       </div>
 
       {/* Filter and Search */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-3 w-4 h-4 text-outline" />
           <input
@@ -115,7 +115,7 @@ export default function MaintenanceList() {
           <select
             value={selectedPriority}
             onChange={(e) => setSelectedPriority(e.target.value)}
-            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
           >
             <option value="All">All Priorities</option>
             <option value="Low">Low</option>
@@ -127,7 +127,7 @@ export default function MaintenanceList() {
       </div>
 
       {/* Maintenance Table Card */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -181,9 +181,9 @@ export default function MaintenanceList() {
       {/* Create Maintenance Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-3xl border border-outline-variant max-w-xl w-full p-6 shadow-2xl relative overflow-hidden animate-scale-in">
+          <div className="bg-surface-container-lowest rounded-3xl border border-outline-variant max-w-xl w-full p-6 shadow-2xl relative overflow-hidden animate-scale-in">
             {success && (
-              <div className="absolute inset-0 bg-white/95 flex flex-col items-center justify-center z-20">
+              <div className="absolute inset-0 bg-surface-container-lowest/95 flex flex-col items-center justify-center z-20">
                 <CheckCircle className="w-12 h-12 text-green-600 animate-bounce mb-3" />
                 <span className="font-bold text-on-surface">Maintenance scheduled successfully!</span>
               </div>
@@ -200,7 +200,7 @@ export default function MaintenanceList() {
                   <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1.5">Select Vehicle *</label>
                   <select 
                     {...register('vehicleId')}
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   >
                     <option value="">Select vehicle</option>
                     {vehicles.map(v => (
@@ -216,7 +216,7 @@ export default function MaintenanceList() {
                     {...register('type')}
                     type="text" 
                     placeholder="e.g. Oil Change"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                   {errors.type && <p className="text-xs text-error mt-0.5">{errors.type.message}</p>}
                 </div>
@@ -227,7 +227,7 @@ export default function MaintenanceList() {
                 <textarea 
                   {...register('description')}
                   rows={2}
-                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none resize-none"
+                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none resize-none"
                 />
                 {errors.description && <p className="text-xs text-error mt-0.5">{errors.description.message}</p>}
               </div>
@@ -237,7 +237,7 @@ export default function MaintenanceList() {
                   <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1.5">Priority *</label>
                   <select 
                     {...register('priority')}
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   >
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
@@ -251,7 +251,7 @@ export default function MaintenanceList() {
                   <input 
                     {...register('scheduledDate')}
                     type="date"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                   {errors.scheduledDate && <p className="text-xs text-error mt-0.5">{errors.scheduledDate.message}</p>}
                 </div>
@@ -263,7 +263,7 @@ export default function MaintenanceList() {
                   <input 
                     {...register('estimatedCost', { valueAsNumber: true })}
                     type="number"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                 </div>
 
@@ -273,7 +273,7 @@ export default function MaintenanceList() {
                     {...register('mechanic')}
                     type="text" 
                     placeholder="e.g. Suresh Patel"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                   {errors.mechanic && <p className="text-xs text-error mt-0.5">{errors.mechanic.message}</p>}
                 </div>
@@ -283,7 +283,7 @@ export default function MaintenanceList() {
                 <button type="submit" className="flex-1 bg-primary text-white py-2.5 rounded-xl font-medium hover:bg-primary/95 transition-colors">
                   Schedule
                 </button>
-                <button type="button" onClick={() => setShowCreateModal(false)} className="flex-1 bg-white border border-outline-variant text-on-surface py-2.5 rounded-xl font-medium hover:bg-surface-container-low transition-colors">
+                <button type="button" onClick={() => setShowCreateModal(false)} className="flex-1 bg-surface-container-lowest border border-outline-variant text-on-surface py-2.5 rounded-xl font-medium hover:bg-surface-container-low transition-colors">
                   Cancel
                 </button>
               </div>
