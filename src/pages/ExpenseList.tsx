@@ -56,12 +56,11 @@ export default function ExpenseList() {
       const v = vehicles.find(item => item.id === data.vehicleId);
       const payload = {
         date: data.date,
-        category: data.category,
+        expenseType: data.category,
         description: data.description,
         vehicleId: data.vehicleId,
-        vehicleName: v ? v.name : undefined,
         amount: data.amount,
-        status: 'Pending',
+        status: 'PENDING',
       };
       
       const newExp = await api.expenses.create(payload);

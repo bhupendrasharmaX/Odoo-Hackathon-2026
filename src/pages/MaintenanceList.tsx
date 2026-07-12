@@ -55,13 +55,12 @@ export default function MaintenanceList() {
       const v = vehicles.find(item => item.id === data.vehicleId);
       const payload = {
         vehicleId: data.vehicleId,
-        vehicleName: v ? v.name : 'Unknown Vehicle',
-        type: data.type,
+        title: data.type,
         description: data.description,
         priority: data.priority,
-        status: 'Scheduled',
-        scheduledDate: data.scheduledDate,
-        estimatedCost: data.estimatedCost,
+        status: 'SCHEDULED',
+        startDate: data.scheduledDate,
+        cost: data.estimatedCost,
         mechanic: data.mechanic,
       };
       

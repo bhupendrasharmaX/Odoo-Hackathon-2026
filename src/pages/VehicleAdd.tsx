@@ -101,7 +101,24 @@ export default function VehicleAdd() {
 
   const onSubmit = async (data: VehicleFields) => {
     try {
-      await api.vehicles.create(data);
+      let mappedStatus = 'AVAILABLE';
+      if (data.status === 'In Maintenance') mappedStatus = 'IN_SHOP';
+      else if (data.status === 'Retired') mappedStatus = 'RETIRED';
+
+      const payload = {
+        registrationNumber: data.registrationNumber,
+        vehicleName: data.name,
+        model: data.model,
+        vehicleType: data.type.toUpperCase(),
+        maximumCapacity: data.capacity,
+        odometer: data.odometer,
+        purchaseCost: data.purchaseCost,
+        status: mappedStatus,
+        insuranceExpiry: new Date(data.insuranceExpiry).toISOString(),
+        yearOfManufacture: data.yearOfManufacture,
+      };
+      
+      await api.vehicles.create(payload);
       setSuccess(true);
       setTimeout(() => {
         navigate('/vehicles');

@@ -62,9 +62,9 @@ export default function FuelList() {
         driverName: data.driverName,
         date: data.date,
         fuelType: data.fuelType,
-        quantity: data.quantity,
+        liters: data.quantity,
         costPerLiter: data.costPerLiter,
-        totalCost: data.quantity * data.costPerLiter,
+        cost: data.quantity * data.costPerLiter,
         odometer: data.odometer,
         station: data.station,
       };

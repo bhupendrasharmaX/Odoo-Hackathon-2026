@@ -90,7 +90,23 @@ export default function DriverAdd() {
 
   const onSubmit = async (data: DriverFields) => {
     try {
-      await api.drivers.create(data);
+      let mappedStatus = 'AVAILABLE';
+      if (data.status === 'On Leave' || data.status === 'Inactive') mappedStatus = 'OFF_DUTY';
+      else if (data.status === 'Suspended') mappedStatus = 'SUSPENDED';
+
+      const payload = {
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        licenseNumber: data.licenseNumber,
+        licenseCategory: data.licenseCategory,
+        licenseExpiry: new Date(data.licenseExpiry).toISOString(),
+        safetyScore: data.safetyScore,
+        status: mappedStatus,
+        experience: data.experience,
+      };
+
+      await api.drivers.create(payload);
       setSuccess(true);
       setTimeout(() => {
         navigate('/drivers');

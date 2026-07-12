@@ -61,7 +61,17 @@ export default function TripCreate() {
 
   const handleDispatch = async () => {
     try {
-      await api.trips.create(tripData);
+      const payload = {
+        vehicleId: tripData.vehicleId,
+        driverId: tripData.driverId,
+        source: tripData.source,
+        destination: tripData.destination,
+        cargoType: tripData.cargoType,
+        cargoWeight: tripData.cargoWeight,
+        plannedDistance: tripData.distance,
+        revenue: tripData.revenue,
+      };
+      await api.trips.create(payload);
       setSuccess(true);
       setTimeout(() => {
         navigate('/trips');
