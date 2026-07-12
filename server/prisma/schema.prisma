@@ -1,0 +1,290 @@
+// ─── Prisma Schema for TransitOps ───
+// 12 models: Role, User, OtpVerification, Vehicle, Driver, Trip,
+//            MaintenanceLog, FuelLog, Expense, VehicleDocument,
+//            Notification, AuditLog
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ───
+
+enum OtpPurpose {
+  LOGIN
+  REGISTER
+  PASSWORD_RESET
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  ON_TRIP
+  IN_SHOP
+  RETIRED
+}
+
+enum VehicleType {
+  TRUCK
+  VAN
+  BUS
+  CAR
+  TRAILER
+}
+
+enum DriverStatus {
+  AVAILABLE
+  ON_TRIP
+  OFF_DUTY
+  SUSPENDED
+}
+
+enum TripStatus {
+  DRAFT
+  DISPATCHED
+  IN_TRANSIT
+  COMPLETED
+  CANCELLED
+}
+
+enum MaintenanceStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  OVERDUE
+}
+
+enum ExpenseStatus {
+  APPROVED
+  PENDING
+  REJECTED
+}
+
+enum NotificationType {
+  INFO
+  WARNING
+  ALERT
+  SUCCESS
+}
+
+// ─── Models ───
+
+model Role {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  permissions Json     @default("[]")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users User[]
+
+  @@map("roles")
+}
+
+model User {
+  id               String    @id @default(cuid())
+  name             String
+  mobileNumber     String    @unique
+  email            String?
+  password         String?
+  roleId           String
+  isMobileVerified Boolean   @default(false)
+  isActive         Boolean   @default(true)
+  lastLogin        DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  role      Role       @relation(fields: [roleId], references: [id])
+  auditLogs AuditLog[]
+
+  @@map("users")
+}
+
+model OtpVerification {
+  id           String     @id @default(cuid())
+  mobileNumber String
+  otpCode      String
+  purpose      OtpPurpose @default(LOGIN)
+  expiresAt    DateTime
+  isUsed       Boolean    @default(false)
+  attemptCount Int        @default(0)
+  createdAt    DateTime   @default(now())
+
+  @@index([mobileNumber, purpose])
+  @@map("otp_verifications")
+}
+
+model Vehicle {
+  id                 String        @id @default(cuid())
+  registrationNumber String        @unique
+  vehicleName        String
+  model              String
+  vehicleType        VehicleType
+  maximumCapacity    Float
+  odometer           Float         @default(0)
+  purchaseCost       Float         @default(0)
+  status             VehicleStatus @default(AVAILABLE)
+  insuranceExpiry    DateTime?
+  yearOfManufacture  Int?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  trips            Trip[]
+  maintenanceLogs  MaintenanceLog[]
+  fuelLogs         FuelLog[]
+  expenses         Expense[]
+  vehicleDocuments VehicleDocument[]
+
+  @@map("vehicles")
+}
+
+model Driver {
+  id              String       @id @default(cuid())
+  name            String
+  phone           String       @unique
+  email           String?
+  licenseNumber   String       @unique
+  licenseCategory String
+  licenseExpiry   DateTime
+  safetyScore     Float        @default(0)
+  status          DriverStatus @default(AVAILABLE)
+  totalTrips      Int          @default(0)
+  onTimeRate      Float        @default(0)
+  rating          Float        @default(0)
+  joinedDate      DateTime     @default(now())
+  experience      Int          @default(0)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  trips Trip[]
+
+  @@map("drivers")
+}
+
+model Trip {
+  id              String     @id @default(cuid())
+  vehicleId       String
+  driverId        String
+  source          String
+  destination     String
+  cargoType       String?
+  cargoWeight     Float      @default(0)
+  plannedDistance  Float      @default(0)
+  actualDistance   Float?
+  fuelUsed        Float?
+  fuelCost        Float?
+  revenue         Float      @default(0)
+  status          TripStatus @default(DRAFT)
+  startTime       DateTime?
+  endTime         DateTime?
+  eta             DateTime?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  vehicle  Vehicle   @relation(fields: [vehicleId], references: [id])
+  driver   Driver    @relation(fields: [driverId], references: [id])
+  fuelLogs FuelLog[]
+  expenses Expense[]
+
+  @@map("trips")
+}
+
+model MaintenanceLog {
+  id            String            @id @default(cuid())
+  vehicleId     String
+  title         String
+  description   String?
+  priority      String            @default("Medium")
+  cost          Float             @default(0)
+  status        MaintenanceStatus @default(SCHEDULED)
+  startDate     DateTime
+  completedDate DateTime?
+  mechanic      String?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
+
+  @@map("maintenance_logs")
+}
+
+model FuelLog {
+  id          String   @id @default(cuid())
+  vehicleId   String
+  tripId      String?
+  driverName  String?
+  fuelType    String   @default("Diesel")
+  liters      Float
+  costPerLiter Float   @default(0)
+  cost        Float
+  odometer    Float?
+  station     String?
+  date        DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
+  trip    Trip?   @relation(fields: [tripId], references: [id])
+
+  @@map("fuel_logs")
+}
+
+model Expense {
+  id          String        @id @default(cuid())
+  vehicleId   String?
+  tripId      String?
+  expenseType String
+  amount      Float
+  description String?
+  status      ExpenseStatus @default(PENDING)
+  date        DateTime
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  vehicle Vehicle? @relation(fields: [vehicleId], references: [id])
+  trip    Trip?    @relation(fields: [tripId], references: [id])
+
+  @@map("expenses")
+}
+
+model VehicleDocument {
+  id           String   @id @default(cuid())
+  vehicleId    String
+  documentType String
+  filePath     String
+  expiryDate   DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
+
+  @@map("vehicle_documents")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  title     String
+  message   String
+  type      NotificationType @default(INFO)
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  @@map("notifications")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+}

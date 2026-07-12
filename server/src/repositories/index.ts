@@ -1,0 +1,10 @@
+export { userRepository } from './user.repository.js';
+export { otpRepository } from './otp.repository.js';
+export { vehicleRepository } from './vehicle.repository.js';
+export { driverRepository } from './driver.repository.js';
+export { tripRepository } from './trip.repository.js';
+export { maintenanceRepository } from './maintenance.repository.js';
+export { fuelRepository } from './fuel.repository.js';
+export { expenseRepository } from './expense.repository.js';
+export { notificationRepository } from './notification.repository.js';
+export { auditRepository } from './audit.repository.js';
