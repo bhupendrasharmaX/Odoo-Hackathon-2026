@@ -1,32 +1,27 @@
-# React + TypeScript + Vite
+# TransitOps - Enterprise Fleet & Transport Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A production-ready Enterprise Transport Management System featuring a React frontend, Node.js backend, and multiple database configurations.
 
-Currently, two official plugins are available:
+## 📁 Repository Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `/src`: Frontend Application (React, Vite, Tailwind CSS v4, TypeScript)
+- `/server`: Backend Application (Express, TypeScript, Prisma ORM, PostgreSQL)
+- `/queries.sql`, `/schema.sql`, `/seed.sql`: SQLite database schemas and seeds (managed by the DB team)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Setup and Installation
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+### 1. Database Setup (SQLite Option)
+For testing queries locally using the SQLite schema:
+```bash
+sqlite3 transitops.db
+```
+Inside the sqlite terminal, execute:
+```sql
+.read schema.sql
+.read seed.sql
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### 2. Full Application Setup (PostgreSQL + Prisma Option)
+Follow the setup instructions in `/server/README.md` to run the active PostgreSQL + Express Backend and the React Frontend simultaneously.
