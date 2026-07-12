@@ -64,7 +64,7 @@ export default function FuelList() {
       const payload = {
         vehicleId: data.vehicleId,
         driverName: data.driverName,
-        date: data.date,
+        date: new Date(data.date).toISOString(),
         fuelType: data.fuelType,
         liters: data.quantity,
         costPerLiter: data.costPerLiter,
@@ -73,8 +73,11 @@ export default function FuelList() {
         station: data.station,
       };
       
-      const newLog = await api.fuel.create(payload);
-      setLogs([newLog, ...logs]);
+      await api.fuel.create(payload);
+      
+      const updatedLogs = await api.fuel.getAll();
+      setLogs(updatedLogs);
+      
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

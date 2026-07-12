@@ -59,7 +59,7 @@ export default function ExpenseList() {
     try {
       const v = realVehicles.find(item => item.id === data.vehicleId);
       const payload = {
-        date: data.date,
+        date: new Date(data.date).toISOString(),
         expenseType: data.category,
         description: data.description,
         vehicleId: data.vehicleId,
@@ -67,8 +67,11 @@ export default function ExpenseList() {
         status: 'PENDING',
       };
       
-      const newExp = await api.expenses.create(payload);
-      setExpenseList([newExp, ...expenseList]);
+      await api.expenses.create(payload);
+      
+      const updatedExpenses = await api.expenses.getAll();
+      setExpenseList(updatedExpenses);
+      
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

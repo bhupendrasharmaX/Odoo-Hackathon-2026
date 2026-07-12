@@ -63,13 +63,17 @@ export default function MaintenanceList() {
         description: data.description,
         priority: data.priority,
         status: 'SCHEDULED',
-        startDate: data.scheduledDate,
+        startDate: new Date(data.scheduledDate).toISOString(),
         cost: data.estimatedCost,
         mechanic: data.mechanic,
       };
       
-      const newRecord = await api.maintenance.create(payload);
-      setRecords([newRecord, ...records]);
+      await api.maintenance.create(payload);
+      
+      // Refetch
+      const updatedRecords = await api.maintenance.getAll();
+      setRecords(updatedRecords);
+      
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
