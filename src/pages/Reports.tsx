@@ -19,7 +19,7 @@ export default function Reports() {
           <p className="text-sm text-on-surface-variant">Perform deep analytics on fleet operations, fuel trends, and revenues.</p>
         </div>
         <div className="flex gap-2">
-          <button onClick={() => alert('CSV exported')} className="flex items-center gap-1.5 px-4 py-2.5 bg-white border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs">
+          <button onClick={() => alert('CSV exported')} className="flex items-center gap-1.5 px-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs">
             <Download className="w-4 h-4 text-on-surface-variant" /> Export CSV
           </button>
           <button onClick={() => alert('PDF report downloaded')} className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors shadow-xs">
@@ -29,7 +29,7 @@ export default function Reports() {
       </div>
 
       {/* Filters Row */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col sm:flex-row gap-4 items-center justify-between">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col sm:flex-row gap-4 items-center justify-between">
         <div className="flex items-center gap-3">
           <Calendar className="w-5 h-5 text-outline" />
           <div className="flex bg-surface-container rounded-lg p-0.5 text-xs font-semibold uppercase tracking-wider">
@@ -38,7 +38,7 @@ export default function Reports() {
                 key={range}
                 onClick={() => setTimeRange(range)}
                 className={`px-3 py-1.5 rounded-md transition-colors ${
-                  timeRange === range ? 'bg-white text-primary shadow-xs' : 'text-on-surface-variant hover:text-on-surface'
+                  timeRange === range ? 'bg-surface-container-lowest text-primary shadow-xs' : 'text-on-surface-variant hover:text-on-surface'
                 }`}
               >
                 {range}
@@ -49,7 +49,7 @@ export default function Reports() {
 
         <div className="flex items-center gap-2">
           <Filter className="w-4 h-4 text-outline" />
-          <select className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none">
+          <select className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none">
             <option>All Divisions</option>
             <option>North Region</option>
             <option>South Region</option>
@@ -61,7 +61,7 @@ export default function Reports() {
       {/* Grid of Report Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Revenue vs Expenses */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[320px] flex flex-col justify-between">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[320px] flex flex-col justify-between">
           <h3 className="font-bold text-on-surface text-base mb-2">Revenue vs Expense Growth</h3>
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
@@ -85,7 +85,7 @@ export default function Reports() {
         </div>
 
         {/* Trips completion */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[320px] flex flex-col justify-between">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[320px] flex flex-col justify-between">
           <h3 className="font-bold text-on-surface text-base mb-2">Trip Dispatches Completed</h3>
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
@@ -103,7 +103,7 @@ export default function Reports() {
         </div>
 
         {/* Fuel logs consumption */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[320px] flex flex-col justify-between">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[320px] flex flex-col justify-between">
           <h3 className="font-bold text-on-surface text-base mb-2">Monthly Fuel Consumption</h3>
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
@@ -120,7 +120,7 @@ export default function Reports() {
         </div>
 
         {/* Line Chart comparing parameters */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[320px] flex flex-col justify-between">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[320px] flex flex-col justify-between">
           <h3 className="font-bold text-on-surface text-base mb-2">Fleet Operational Efficiency</h3>
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">

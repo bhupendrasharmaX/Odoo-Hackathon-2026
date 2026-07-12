@@ -51,7 +51,7 @@ export default function TripList() {
       </div>
 
       {/* Filter and Search */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-3 w-4 h-4 text-outline" />
           <input
@@ -67,7 +67,7 @@ export default function TripList() {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
           >
             <option value="All">All Statuses</option>
             <option value="Scheduled">Scheduled</option>
@@ -87,7 +87,7 @@ export default function TripList() {
             <div 
               key={trip.id}
               onClick={() => navigate(`/trips/${trip.id}`)}
-              className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs hover:border-primary/30 transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 group"
+              className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs hover:border-primary/30 transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 group"
             >
               {/* Left Column: ID & Source/Destination Route */}
               <div className="space-y-3">
@@ -140,7 +140,7 @@ export default function TripList() {
             </div>
           ))
         ) : (
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-12 text-center text-on-surface-variant font-medium">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-12 text-center text-on-surface-variant font-medium">
             No active trips matched parameters.
           </div>
         )}

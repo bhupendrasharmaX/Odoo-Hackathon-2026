@@ -51,7 +51,7 @@ export default function DriverAdd() {
       <div className="flex items-center gap-4">
         <button 
           onClick={() => navigate('/drivers')}
-          className="p-2 rounded-xl border border-outline-variant bg-white text-on-surface-variant hover:text-primary transition-colors"
+          className="p-2 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
@@ -72,7 +72,7 @@ export default function DriverAdd() {
         {/* Left columns */}
         <div className="lg:col-span-2 space-y-6">
           {/* Personal Information */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Personal Information</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -129,7 +129,7 @@ export default function DriverAdd() {
           </div>
 
           {/* License Details */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">License & Experience</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -183,7 +183,7 @@ export default function DriverAdd() {
         {/* Right column */}
         <div className="space-y-6">
           {/* Status & Safety Grid */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Fleet Settings</h3>
             
             <div>
@@ -212,7 +212,7 @@ export default function DriverAdd() {
           </div>
 
           {/* License Upload Card */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Documents Upload</h3>
             <div className="border-2 border-dashed border-outline-variant rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary/50 transition-colors">
               <UploadCloud className="w-8 h-8 text-outline mb-2" />
@@ -222,7 +222,7 @@ export default function DriverAdd() {
           </div>
 
           {/* Actions */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-3">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-3">
             <button
               type="submit"
               className="w-full bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors shadow-xs"
@@ -232,7 +232,7 @@ export default function DriverAdd() {
             <button
               type="button"
               onClick={() => navigate('/drivers')}
-              className="w-full bg-white border border-outline-variant text-on-surface py-3 rounded-xl font-medium hover:bg-surface-container-low transition-colors"
+              className="w-full bg-surface-container-lowest border border-outline-variant text-on-surface py-3 rounded-xl font-medium hover:bg-surface-container-low transition-colors"
             >
               Cancel
             </button>

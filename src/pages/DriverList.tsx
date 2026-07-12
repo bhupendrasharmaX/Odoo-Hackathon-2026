@@ -49,7 +49,7 @@ export default function DriverList() {
       </div>
 
       {/* Filter and Search */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-3 w-4 h-4 text-outline" />
           <input
@@ -65,7 +65,7 @@ export default function DriverList() {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
           >
             <option value="All">All Statuses</option>
             <option value="Active">Active</option>
@@ -83,7 +83,7 @@ export default function DriverList() {
             <div 
               key={driver.id} 
               onClick={() => navigate(`/drivers/${driver.id}`)}
-              className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs hover:shadow-md hover:border-primary/30 transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden"
+              className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs hover:shadow-md hover:border-primary/30 transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden"
             >
               {/* Card top branding */}
               <div className="flex justify-between items-start mb-4">

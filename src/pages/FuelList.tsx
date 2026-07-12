@@ -104,22 +104,22 @@ export default function FuelList() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
           <span className="text-xs text-on-surface-variant uppercase tracking-wider block font-semibold">Total Fuel Cost MTD</span>
           <div className="text-2xl font-black text-on-surface mt-2">{formatCurrency(342000)}</div>
           <span className="text-[10px] text-red-600 font-semibold block mt-1">+5.2% vs last month</span>
         </div>
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
           <span className="text-xs text-on-surface-variant uppercase tracking-wider block font-semibold">Fuel Consumed MTD</span>
           <div className="text-2xl font-black text-on-surface mt-2">8,450 L</div>
           <span className="text-[10px] text-on-surface-variant block mt-1">Avg 272L per vehicle</span>
         </div>
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
           <span className="text-xs text-on-surface-variant uppercase tracking-wider block font-semibold">Avg Fuel Rate</span>
           <div className="text-2xl font-black text-on-surface mt-2">₹89.80 / L</div>
           <span className="text-[10px] text-on-surface-variant block mt-1">Stabilized rate index</span>
         </div>
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs">
           <span className="text-xs text-on-surface-variant uppercase tracking-wider block font-semibold">Fleet Efficiency</span>
           <div className="text-2xl font-black text-green-600 mt-2">4.2 km / L</div>
           <span className="text-[10px] text-green-600 font-semibold block mt-1">+1.8% efficiency up</span>
@@ -127,7 +127,7 @@ export default function FuelList() {
       </div>
 
       {/* Fuel cost trend area chart */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[300px] flex flex-col justify-between">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[300px] flex flex-col justify-between">
         <h3 className="font-bold text-on-surface text-base mb-2">Monthly Fuel Cost Trend</h3>
         <div className="flex-1 min-h-0">
           <ResponsiveContainer width="100%" height="100%">
@@ -149,7 +149,7 @@ export default function FuelList() {
       </div>
 
       {/* Filters and search logs */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-3 w-4 h-4 text-outline" />
           <input
@@ -163,7 +163,7 @@ export default function FuelList() {
       </div>
 
       {/* Logs Table Card */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -212,9 +212,9 @@ export default function FuelList() {
       {/* Record Fuel Entry Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-3xl border border-outline-variant max-w-xl w-full p-6 shadow-2xl relative overflow-hidden animate-scale-in">
+          <div className="bg-surface-container-lowest rounded-3xl border border-outline-variant max-w-xl w-full p-6 shadow-2xl relative overflow-hidden animate-scale-in">
             {success && (
-              <div className="absolute inset-0 bg-white/95 flex flex-col items-center justify-center z-20">
+              <div className="absolute inset-0 bg-surface-container-lowest/95 flex flex-col items-center justify-center z-20">
                 <CheckCircle className="w-12 h-12 text-green-600 animate-bounce mb-3" />
                 <span className="font-bold text-on-surface">Fuel Log Entry Recorded!</span>
               </div>
@@ -231,7 +231,7 @@ export default function FuelList() {
                   <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1.5">Select Vehicle *</label>
                   <select 
                     {...register('vehicleId')}
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   >
                     <option value="">Choose vehicle</option>
                     {vehicles.map(v => (
@@ -246,7 +246,7 @@ export default function FuelList() {
                   <input 
                     {...register('driverName')}
                     type="text"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                   {errors.driverName && <p className="text-xs text-error mt-0.5">{errors.driverName.message}</p>}
                 </div>
@@ -258,14 +258,14 @@ export default function FuelList() {
                   <input 
                     {...register('date')}
                     type="date"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1.5">Fuel Type *</label>
                   <select 
                     {...register('fuelType')}
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   >
                     <option value="Diesel">Diesel</option>
                     <option value="Petrol">Petrol</option>
@@ -278,7 +278,7 @@ export default function FuelList() {
                   <input 
                     {...register('odometer', { valueAsNumber: true })}
                     type="number"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                   {errors.odometer && <p className="text-xs text-error mt-0.5">{errors.odometer.message}</p>}
                 </div>
@@ -291,7 +291,7 @@ export default function FuelList() {
                     {...register('quantity', { valueAsNumber: true })}
                     type="number"
                     step="0.1"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                   {errors.quantity && <p className="text-xs text-error mt-0.5">{errors.quantity.message}</p>}
                 </div>
@@ -301,7 +301,7 @@ export default function FuelList() {
                     {...register('costPerLiter', { valueAsNumber: true })}
                     type="number"
                     step="0.01"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                   {errors.costPerLiter && <p className="text-xs text-error mt-0.5">{errors.costPerLiter.message}</p>}
                 </div>
@@ -320,7 +320,7 @@ export default function FuelList() {
                     {...register('station')}
                     type="text"
                     placeholder="e.g. Indian Oil, Andheri"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                   {errors.station && <p className="text-xs text-error mt-0.5">{errors.station.message}</p>}
                 </div>
@@ -329,7 +329,7 @@ export default function FuelList() {
                   <input 
                     type="text"
                     placeholder="e.g. Highway NH-8"
-                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   />
                 </div>
               </div>
@@ -338,7 +338,7 @@ export default function FuelList() {
                 <button type="submit" className="flex-1 bg-primary text-white py-2.5 rounded-xl font-medium hover:bg-primary/95 transition-colors">
                   Record Log
                 </button>
-                <button type="button" onClick={() => setShowModal(false)} className="flex-1 bg-white border border-outline-variant text-on-surface py-2.5 rounded-xl font-medium hover:bg-surface-container-low transition-colors">
+                <button type="button" onClick={() => setShowModal(false)} className="flex-1 bg-surface-container-lowest border border-outline-variant text-on-surface py-2.5 rounded-xl font-medium hover:bg-surface-container-low transition-colors">
                   Cancel
                 </button>
               </div>

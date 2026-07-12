@@ -85,7 +85,7 @@ export default function VehicleList() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-4 items-center justify-between">
         {/* Search */}
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-3 w-4 h-4 text-outline" />
@@ -106,7 +106,7 @@ export default function VehicleList() {
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
-            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
           >
             <option value="All">All Types</option>
             <option value="Truck">Truck</option>
@@ -118,7 +118,7 @@ export default function VehicleList() {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+            className="px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
           >
             <option value="All">All Statuses</option>
             <option value="Active">Active</option>
@@ -130,7 +130,7 @@ export default function VehicleList() {
       </div>
 
       {/* Vehicles Table Card */}
-      <div className="bg-white border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden">
+      <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -210,8 +210,8 @@ export default function VehicleList() {
         <div className="border-t border-outline-variant/30 py-3.5 px-6 flex items-center justify-between text-xs text-on-surface-variant bg-surface-container-low/20">
           <span>Showing 1 to {sortedVehicles.length} of {sortedVehicles.length} vehicles</span>
           <div className="flex gap-2">
-            <button className="px-3 py-1.5 rounded-lg border border-outline-variant bg-white disabled:opacity-50" disabled>Previous</button>
-            <button className="px-3 py-1.5 rounded-lg border border-outline-variant bg-white disabled:opacity-50" disabled>Next</button>
+            <button className="px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest disabled:opacity-50" disabled>Previous</button>
+            <button className="px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest disabled:opacity-50" disabled>Next</button>
           </div>
         </div>
       </div>

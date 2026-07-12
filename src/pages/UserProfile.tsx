@@ -78,7 +78,7 @@ export default function UserProfile() {
         {/* Profile Card & Info Forms */}
         <div className="lg:col-span-2 space-y-6">
           {/* Avatar Header Card */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs flex flex-col sm:flex-row items-center gap-6 relative overflow-hidden">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs flex flex-col sm:flex-row items-center gap-6 relative overflow-hidden">
             <div className="relative group">
               <div className="w-24 h-24 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-3xl mb-1 sm:mb-0">
                 AS
@@ -98,7 +98,7 @@ export default function UserProfile() {
           </div>
 
           {/* Personal Info Form Card */}
-          <form onSubmit={valProfile(onUpdateProfile)} className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
+          <form onSubmit={valProfile(onUpdateProfile)} className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-5">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <User className="w-5 h-5 text-primary" /> Personal Information
             </h3>
@@ -174,7 +174,7 @@ export default function UserProfile() {
         {/* Password and Activity log column */}
         <div className="space-y-6">
           {/* Security Change password form */}
-          <form onSubmit={valPassword(onUpdatePassword)} className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
+          <form onSubmit={valPassword(onUpdatePassword)} className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <Lock className="w-5 h-5 text-primary" /> Update Password
             </h3>
@@ -185,7 +185,7 @@ export default function UserProfile() {
                 <input 
                   {...regPassword('currentPassword')}
                   type="password" 
-                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                 />
                 {errPassword.currentPassword && <p className="text-xs text-error mt-1">{errPassword.currentPassword.message}</p>}
               </div>
@@ -194,7 +194,7 @@ export default function UserProfile() {
                 <input 
                   {...regPassword('newPassword')}
                   type="password" 
-                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                 />
                 {errPassword.newPassword && <p className="text-xs text-error mt-1">{errPassword.newPassword.message}</p>}
               </div>
@@ -203,7 +203,7 @@ export default function UserProfile() {
                 <input 
                   {...regPassword('confirmPassword')}
                   type="password" 
-                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-white focus:border-primary outline-none"
+                  className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                 />
                 {errPassword.confirmPassword && <p className="text-xs text-error mt-1">{errPassword.confirmPassword.message}</p>}
               </div>
@@ -215,7 +215,7 @@ export default function UserProfile() {
           </form>
 
           {/* Activity Log list */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3 flex items-center gap-2">
               <Clock className="w-5 h-5 text-primary" /> Activity Log
             </h3>

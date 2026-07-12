@@ -36,7 +36,11 @@ const typeIcon = {
   SUCCESS: <CheckCircle className="w-4 h-4 text-success" />,
 };
 
-export default function Navbar() {
+interface NavbarProps {
+  onMobileMenuToggle?: () => void;
+}
+
+export default function Navbar({ onMobileMenuToggle }: NavbarProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(() => {
@@ -46,7 +50,6 @@ export default function Navbar() {
   });
   const [showProfile, setShowProfile] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
 
   const notifRef = useRef<HTMLDivElement>(null);
@@ -96,12 +99,12 @@ export default function Navbar() {
   ].filter((b, i, arr) => i === 0 || arr.findIndex(x => x.path === b.path) === i);
 
   return (
-    <header className="sticky top-0 z-40 w-full h-16 bg-white/80 dark:bg-surface-container/80 backdrop-blur-xl border-b border-outline-variant/50 flex items-center justify-between px-4 md:px-6 transition-colors duration-300">
+    <header className="sticky top-0 z-40 w-full h-16 bg-surface-container-lowest/80 dark:bg-surface-container/80 backdrop-blur-xl border-b border-outline-variant/50 flex items-center justify-between px-4 md:px-6 transition-colors duration-300">
       {/* Left: Mobile menu + Breadcrumb */}
       <div className="flex items-center gap-3">
         <button
-          className="md:hidden text-on-surface-variant"
-          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          className="md:hidden text-on-surface-variant p-1.5 rounded-lg hover:bg-surface-container-low transition-colors"
+          onClick={onMobileMenuToggle}
         >
           <Menu className="w-5 h-5" />
         </button>

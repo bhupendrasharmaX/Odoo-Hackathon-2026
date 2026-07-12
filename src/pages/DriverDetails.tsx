@@ -35,7 +35,7 @@ export default function DriverDetails() {
         <div className="flex items-center gap-4">
           <button 
             onClick={() => navigate('/drivers')}
-            className="p-2 rounded-xl border border-outline-variant bg-white text-on-surface-variant hover:text-primary transition-colors"
+            className="p-2 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -51,7 +51,7 @@ export default function DriverDetails() {
         </div>
 
         <div className="flex gap-2">
-          <button onClick={() => alert('Edit profile')} className="flex items-center gap-1.5 px-4 py-2.5 bg-white border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs">
+          <button onClick={() => alert('Edit profile')} className="flex items-center gap-1.5 px-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs">
             <Edit className="w-4 h-4" /> Edit Profile
           </button>
           <button onClick={() => navigate('/trips/create')} className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors shadow-xs">
@@ -62,7 +62,7 @@ export default function DriverDetails() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Card: Driver Info Card */}
-        <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-6">
+        <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-6">
           <div className="flex flex-col items-center text-center">
             <div className="w-24 h-24 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-3xl mb-3">
               {driver.name.split(' ').map(n => n[0]).join('')}
@@ -99,25 +99,25 @@ export default function DriverDetails() {
         <div className="lg:col-span-2 space-y-6">
           {/* Performance KPIs Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs text-center">
+            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs text-center">
               <span className="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold block">Safety Score</span>
               <div className="text-2xl font-bold text-green-600 mt-2">{driver.safetyScore}</div>
               <span className="text-[10px] text-on-surface-variant mt-1 block">Excellent status</span>
             </div>
 
-            <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs text-center">
+            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs text-center">
               <span className="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold block">Total Trips</span>
               <div className="text-2xl font-bold text-on-surface mt-2">{driver.totalTrips}</div>
               <span className="text-[10px] text-on-surface-variant mt-1 block">Lifetime completion</span>
             </div>
 
-            <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs text-center">
+            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs text-center">
               <span className="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold block">On-Time Rate</span>
               <div className="text-2xl font-bold text-primary mt-2">{driver.onTimeRate}%</div>
               <span className="text-[10px] text-on-surface-variant mt-1 block">Top 5% in fleet</span>
             </div>
 
-            <div className="bg-white border border-outline-variant/60 rounded-2xl p-4 shadow-xs text-center flex flex-col justify-between items-center">
+            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-4 shadow-xs text-center flex flex-col justify-between items-center">
               <span className="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold block">Rating</span>
               <div className="flex items-center gap-1 text-2xl font-bold text-on-surface mt-1">
                 <Star className="w-5 h-5 fill-warning text-warning" /> {driver.rating}
@@ -127,7 +127,7 @@ export default function DriverDetails() {
           </div>
 
           {/* Recharts Performance chart */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[280px] flex flex-col justify-between">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 shadow-xs h-[280px] flex flex-col justify-between">
             <h3 className="font-bold text-on-surface text-base mb-2">Monthly Dispatch Performance</h3>
             <div className="flex-1 min-h-0">
               <ResponsiveContainer width="100%" height="100%">
@@ -145,7 +145,7 @@ export default function DriverDetails() {
           </div>
 
           {/* Driving History Timeline */}
-          <div className="bg-white border border-outline-variant/60 rounded-2xl p-6 shadow-xs">
+          <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs">
             <h3 className="font-bold text-on-surface text-base mb-4">Driving Incident Timeline</h3>
             <div className="relative pl-6 border-l-2 border-outline-variant/40 space-y-6">
               <div className="relative">
