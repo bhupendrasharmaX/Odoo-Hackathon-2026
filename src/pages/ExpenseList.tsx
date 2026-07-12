@@ -30,11 +30,15 @@ export default function ExpenseList() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showModal, setShowModal] = useState(false);
 
+  const [realVehicles, setRealVehicles] = useState<any[]>(vehicles);
+
   useEffect(() => {
     async function loadExpenses() {
       try {
         const data = await api.expenses.getAll();
         setExpenseList(data);
+        const vData = await api.vehicles.getAll();
+        setRealVehicles(vData);
       } catch (err) {
         console.error('Failed to fetch expenses', err);
       }
@@ -53,7 +57,7 @@ export default function ExpenseList() {
 
   const onSubmit = async (data: ExpenseFields) => {
     try {
-      const v = vehicles.find(item => item.id === data.vehicleId);
+      const v = realVehicles.find(item => item.id === data.vehicleId);
       const payload = {
         date: data.date,
         expenseType: data.category,
@@ -328,9 +332,9 @@ export default function ExpenseList() {
                     {...register('vehicleId')}
                     className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   >
-                    <option value="">No Vehicle association</option>
-                    {vehicles.map(v => (
-                      <option key={v.id} value={v.id}>{v.id} - {v.name}</option>
+                    <option value="">Select Vehicle (Optional)</option>
+                    {realVehicles.map(v => (
+                      <option key={v.id} value={v.id}>{v.id} - {v.vehicleName || v.name}</option>
                     ))}
                   </select>
                 </div>

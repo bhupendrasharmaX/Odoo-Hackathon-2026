@@ -28,11 +28,15 @@ export default function FuelList() {
   const [showModal, setShowModal] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const [realVehicles, setRealVehicles] = useState<any[]>(vehicles);
+
   useEffect(() => {
     async function loadFuel() {
       try {
         const data = await api.fuel.getAll();
         setLogs(data);
+        const vData = await api.vehicles.getAll();
+        setRealVehicles(vData);
       } catch (err) {
         console.error('Failed to fetch fuel logs', err);
       }
@@ -56,7 +60,7 @@ export default function FuelList() {
 
   const onSubmit = async (data: FuelFields) => {
     try {
-      const v = vehicles.find(item => item.id === data.vehicleId);
+      const v = realVehicles.find(item => item.id === data.vehicleId);
       const payload = {
         vehicleId: data.vehicleId,
         driverName: data.driverName,
@@ -239,8 +243,8 @@ export default function FuelList() {
                     className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   >
                     <option value="">Choose vehicle</option>
-                    {vehicles.map(v => (
-                      <option key={v.id} value={v.id}>{v.id} - {v.name}</option>
+                    {realVehicles.map(v => (
+                      <option key={v.id} value={v.id}>{v.id} - {v.vehicleName || v.name}</option>
                     ))}
                   </select>
                   {errors.vehicleId && <p className="text-xs text-error mt-0.5">{errors.vehicleId.message}</p>}

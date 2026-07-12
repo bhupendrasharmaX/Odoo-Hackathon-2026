@@ -32,6 +32,22 @@ export default function TripCreate() {
   const [step, setStep] = useState(1);
   const [tripData, setTripData] = useState<any>({});
   const [success, setSuccess] = useState(false);
+  const [realVehicles, setRealVehicles] = useState<any[]>(vehicles);
+  const [realDrivers, setRealDrivers] = useState<any[]>(drivers);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const vData = await api.vehicles.getAll();
+        setRealVehicles(vData);
+        const dData = await api.drivers.getAll();
+        setRealDrivers(dData);
+      } catch (err) {
+        console.error('Failed to fetch data', err);
+      }
+    }
+    loadData();
+  }, []);
 
   // Forms
   const { register: reg1, handleSubmit: val1, formState: { errors: err1 } } = useForm<zod.infer<typeof step1Schema>>({
@@ -182,9 +198,9 @@ export default function TripCreate() {
                   {...reg2('vehicleId')}
                   className="w-full px-4 py-2.5 rounded-xl border border-outline-variant bg-surface-container-lowest text-sm focus:border-primary outline-none"
                 >
-                  <option value="">-- Choose available vehicle --</option>
-                  {vehicles.filter(v => v.status === 'Available' || v.status === 'Active').map(v => (
-                    <option key={v.id} value={v.id}>{v.id} - {v.name} ({v.type})</option>
+                  <option value="">Select vehicle</option>
+                  {realVehicles.map(v => (
+                    <option key={v.id} value={v.id}>{v.id} - {v.vehicleName || v.name}</option>
                   ))}
                 </select>
                 {err2.vehicleId && <p className="text-xs text-error mt-1">{err2.vehicleId.message}</p>}
@@ -196,9 +212,9 @@ export default function TripCreate() {
                   {...reg2('driverId')}
                   className="w-full px-4 py-2.5 rounded-xl border border-outline-variant bg-surface-container-lowest text-sm focus:border-primary outline-none"
                 >
-                  <option value="">-- Choose active driver --</option>
-                  {drivers.filter(d => d.status === 'Active').map(d => (
-                    <option key={d.id} value={d.id}>{d.id} - {d.name} (Safety Score: {d.safetyScore})</option>
+                  <option value="">Select driver</option>
+                  {realDrivers.map(d => (
+                    <option key={d.id} value={d.id}>{d.id} - {d.name}</option>
                   ))}
                 </select>
                 {err2.driverId && <p className="text-xs text-error mt-1">{err2.driverId.message}</p>}

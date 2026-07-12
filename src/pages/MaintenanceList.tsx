@@ -29,16 +29,20 @@ export default function MaintenanceList() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const [realVehicles, setRealVehicles] = useState<any[]>(vehicles);
+
   useEffect(() => {
-    async function loadMaintenance() {
+    async function loadData() {
       try {
         const data = await api.maintenance.getAll();
         setRecords(data);
+        const vData = await api.vehicles.getAll();
+        setRealVehicles(vData);
       } catch (err) {
-        console.error('Failed to fetch maintenance records', err);
+        console.error('Failed to fetch data', err);
       }
     }
-    loadMaintenance();
+    loadData();
   }, []);
 
   // Form
@@ -52,7 +56,7 @@ export default function MaintenanceList() {
 
   const onSubmit = async (data: MntFields) => {
     try {
-      const v = vehicles.find(item => item.id === data.vehicleId);
+      const v = realVehicles.find(item => item.id === data.vehicleId);
       const payload = {
         vehicleId: data.vehicleId,
         title: data.type,
@@ -208,8 +212,8 @@ export default function MaintenanceList() {
                     className="w-full px-3 py-2 rounded-xl border border-outline-variant text-sm bg-surface-container-lowest focus:border-primary outline-none"
                   >
                     <option value="">Select vehicle</option>
-                    {vehicles.map(v => (
-                      <option key={v.id} value={v.id}>{v.id} - {v.name}</option>
+                    {realVehicles.map(v => (
+                      <option key={v.id} value={v.id}>{v.id} - {v.vehicleName || v.name}</option>
                     ))}
                   </select>
                   {errors.vehicleId && <p className="text-xs text-error mt-0.5">{errors.vehicleId.message}</p>}
