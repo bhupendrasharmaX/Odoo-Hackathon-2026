@@ -83,6 +83,15 @@
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-outline);
   }
+
+  input, select, textarea {
+    color: var(--color-on-surface);
+    background-color: var(--color-surface-container-lowest);
+  }
+  
+  input::placeholder, textarea::placeholder {
+    color: var(--color-outline);
+  }
 }
 
 /* Dark Mode Overrides */
