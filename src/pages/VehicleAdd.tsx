@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
-import { ArrowLeft, UploadCloud, FileText, CheckCircle } from 'lucide-react';
+import { ArrowLeft, UploadCloud, FileText, CheckCircle, X } from 'lucide-react';
 
 const vehicleSchema = zod.object({
   registrationNumber: zod.string().min(4, 'Registration number is required'),
   name: zod.string().min(2, 'Vehicle name is required'),
   model: zod.string().min(2, 'Model is required'),
   type: zod.enum(['Truck', 'Van', 'Bus', 'Car', 'Trailer']),
-  capacity: zod.number().min(0.1, 'Capacity must be positive'),
-  yearOfManufacture: zod.number().min(1990).max(2027),
-  purchaseCost: zod.number().min(1000, 'Cost must be valid'),
-  odometer: zod.number().min(0),
+  capacity: zod.number().min(0.1, 'Capacity must be greater than 0'),
+  yearOfManufacture: zod.number().min(1900).max(new Date().getFullYear() + 1),
+  odometer: zod.number().min(0, 'Odometer must be positive'),
+  purchaseCost: zod.number().min(0, 'Purchase cost must be positive'),
+  insuranceExpiry: zod.string().min(1, 'Insurance expiry date is required'),
   status: zod.enum(['Active', 'Available', 'In Maintenance', 'Retired']),
-  insuranceExpiry: zod.string().min(1, 'Insurance date is required'),
 });
 
 type VehicleFields = zod.infer<typeof vehicleSchema>;
@@ -23,6 +23,9 @@ type VehicleFields = zod.infer<typeof vehicleSchema>;
 export default function VehicleAdd() {
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<{ name: string; size: string; preview: string } | null>(null);
+  const [dragActive, setDragActive] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   
   const { register, handleSubmit, formState: { errors } } = useForm<VehicleFields>({
     resolver: zodResolver(vehicleSchema),
@@ -34,9 +37,69 @@ export default function VehicleAdd() {
     }
   });
 
+  // Clean up object URLs to avoid memory leaks
+  useEffect(() => {
+    return () => {
+      if (uploadedFile?.preview) {
+        URL.revokeObjectURL(uploadedFile.preview);
+      }
+    };
+  }, [uploadedFile]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+      setUploadedFile({
+        name: file.name,
+        size: `${sizeInMB} MB`,
+        preview: URL.createObjectURL(file)
+      });
+    }
+  };
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      const file = e.dataTransfer.files[0];
+      const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+      setUploadedFile({
+        name: file.name,
+        size: `${sizeInMB} MB`,
+        preview: URL.createObjectURL(file)
+      });
+    }
+  };
+
+  const onUploadClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const removeFile = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (uploadedFile?.preview) {
+      URL.revokeObjectURL(uploadedFile.preview);
+    }
+    setUploadedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
   const onSubmit = (data: VehicleFields) => {
-    // In a real application, save to DB
-    console.log('New Vehicle Submitted:', data);
+    console.log('New Vehicle Submitted:', data, 'Photo:', uploadedFile);
     setSuccess(true);
     setTimeout(() => {
       navigate('/vehicles');
@@ -204,12 +267,55 @@ export default function VehicleAdd() {
           {/* Image Upload Card */}
           <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Vehicle Photo</h3>
+            <input 
+              ref={fileInputRef}
+              type="file" 
+              accept="image/*"
+              className="hidden" 
+              onChange={handleFileChange}
+            />
             
-            <div className="border-2 border-dashed border-outline-variant rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary/50 transition-colors">
-              <UploadCloud className="w-10 h-10 text-outline mb-3" />
-              <span className="text-sm font-semibold text-on-surface">Drag & drop or click to upload</span>
-              <span className="text-xs text-on-surface-variant mt-1">Supports JPG, PNG up to 5MB</span>
-            </div>
+            {!uploadedFile ? (
+              <div 
+                onClick={onUploadClick}
+                onDragEnter={handleDrag}
+                onDragOver={handleDrag}
+                onDragLeave={handleDrag}
+                onDrop={handleDrop}
+                className={`border-2 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-colors ${
+                  dragActive 
+                    ? 'border-primary bg-primary/5' 
+                    : 'border-outline-variant hover:border-primary/50 hover:bg-surface-container-low/20'
+                }`}
+              >
+                <UploadCloud className="w-10 h-10 text-outline mb-3" />
+                <span className="text-sm font-semibold text-on-surface">Drag & drop or click to upload</span>
+                <span className="text-xs text-on-surface-variant mt-1">Supports JPG, PNG up to 5MB</span>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <div className="relative border border-outline-variant/60 rounded-2xl overflow-hidden aspect-video bg-surface-container-low">
+                  <img 
+                    src={uploadedFile.preview} 
+                    alt="Vehicle preview" 
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={removeFile}
+                    className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+                <div className="flex items-center justify-between px-2">
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold text-on-surface truncate">{uploadedFile.name}</p>
+                    <p className="text-[10px] text-on-surface-variant mt-0.5">{uploadedFile.size}</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Form Actions */}
