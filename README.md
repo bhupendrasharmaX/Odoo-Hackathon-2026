@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Animated Header -->
-<img src="public/logo.jpeg" alt="TransportAI Logo" width="500" />
+<img src="public/logo.png" alt="TransportAI Logo" width="250" />
 
 <br/>
 
