@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
-import { ArrowLeft, UploadCloud, CheckCircle } from 'lucide-react';
+import { ArrowLeft, UploadCloud, CheckCircle, X } from 'lucide-react';
 
 const driverSchema = zod.object({
   name: zod.string().min(2, 'Name is required'),
@@ -24,6 +24,9 @@ type DriverFields = zod.infer<typeof driverSchema>;
 export default function DriverAdd() {
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<{ name: string; size: string } | null>(null);
+  const [dragActive, setDragActive] = useState(false);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
   
   const { register, handleSubmit, formState: { errors }, watch } = useForm<DriverFields>({
     resolver: zodResolver(driverSchema),
@@ -37,8 +40,55 @@ export default function DriverAdd() {
 
   const safetyScoreVal = watch('safetyScore');
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+      setUploadedFile({
+        name: file.name,
+        size: `${sizeInMB} MB`
+      });
+    }
+  };
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      const file = e.dataTransfer.files[0];
+      const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+      setUploadedFile({
+        name: file.name,
+        size: `${sizeInMB} MB`
+      });
+    }
+  };
+
+  const onUploadClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const removeFile = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setUploadedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
   const onSubmit = (data: DriverFields) => {
-    console.log('Driver Saved:', data);
+    console.log('Driver Saved:', data, 'Document:', uploadedFile);
     setSuccess(true);
     setTimeout(() => {
       navigate('/drivers');
@@ -214,18 +264,58 @@ export default function DriverAdd() {
           {/* License Upload Card */}
           <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 className="font-bold text-on-surface text-base border-b border-outline-variant/30 pb-3">Documents Upload</h3>
-            <div className="border-2 border-dashed border-outline-variant rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary/50 transition-colors">
-              <UploadCloud className="w-8 h-8 text-outline mb-2" />
-              <span className="text-xs font-semibold text-on-surface">Upload License Copy</span>
-              <span className="text-[10px] text-on-surface-variant mt-0.5">PDF or Image up to 5MB</span>
-            </div>
+            <input 
+              ref={fileInputRef}
+              type="file" 
+              accept="image/*,application/pdf"
+              className="hidden" 
+              onChange={handleFileChange}
+            />
+            
+            {!uploadedFile ? (
+              <div 
+                onClick={onUploadClick}
+                onDragEnter={handleDrag}
+                onDragOver={handleDrag}
+                onDragLeave={handleDrag}
+                onDrop={handleDrop}
+                className={`border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors ${
+                  dragActive 
+                    ? 'border-primary bg-primary/5' 
+                    : 'border-outline-variant hover:border-primary/50 hover:bg-surface-container-low/20'
+                }`}
+              >
+                <UploadCloud className="w-8 h-8 text-outline mb-2" />
+                <span className="text-xs font-semibold text-on-surface">Upload License Copy</span>
+                <span className="text-[10px] text-on-surface-variant mt-0.5">PDF or Image up to 5MB</span>
+              </div>
+            ) : (
+              <div className="border border-outline-variant/60 bg-surface-container-low rounded-xl p-4 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="p-2 bg-primary/10 rounded-lg shrink-0">
+                    <UploadCloud className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold text-on-surface truncate">{uploadedFile.name}</p>
+                    <p className="text-[10px] text-on-surface-variant mt-0.5">{uploadedFile.size}</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={removeFile}
+                  className="p-1 rounded-lg text-outline hover:text-error hover:bg-error/10 transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Actions */}
           <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-3">
             <button
               type="submit"
-              className="w-full bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors shadow-xs"
+              className="w-full bg-primary text-on-primary py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors shadow-xs"
             >
               Save Driver
             </button>

@@ -83,7 +83,7 @@ export default function UserProfile() {
               <div className="w-24 h-24 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-3xl mb-1 sm:mb-0">
                 AS
               </div>
-              <button className="absolute bottom-0 right-0 p-1.5 bg-primary text-white rounded-full border-2 border-white shadow-md hover:bg-primary/95 transition-colors">
+              <button className="absolute bottom-0 right-0 p-1.5 bg-primary text-on-primary rounded-full border-2 border-white shadow-md hover:bg-primary/95 transition-colors">
                 <Camera className="w-4 h-4" />
               </button>
             </div>
@@ -165,7 +165,7 @@ export default function UserProfile() {
               </div>
             </div>
 
-            <button type="submit" className="px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-semibold hover:bg-primary/95 transition-colors flex items-center gap-1.5 shadow-xs">
+            <button type="submit" className="px-4 py-2.5 bg-primary text-on-primary rounded-xl text-sm font-semibold hover:bg-primary/95 transition-colors flex items-center gap-1.5 shadow-xs">
               <Save className="w-4 h-4" /> Save Information
             </button>
           </form>
@@ -209,7 +209,7 @@ export default function UserProfile() {
               </div>
             </div>
 
-            <button type="submit" className="w-full bg-primary text-white py-2.5 rounded-xl font-medium hover:bg-primary/95 transition-colors text-sm shadow-xs">
+            <button type="submit" className="w-full bg-primary text-on-primary py-2.5 rounded-xl font-medium hover:bg-primary/95 transition-colors text-sm shadow-xs">
               Change Security Password
             </button>
           </form>

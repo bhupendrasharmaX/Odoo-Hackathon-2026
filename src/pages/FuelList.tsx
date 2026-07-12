@@ -96,7 +96,7 @@ export default function FuelList() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors self-start sm:self-auto shadow-xs"
+          className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-on-primary rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors self-start sm:self-auto shadow-xs"
         >
           <Plus className="w-4 h-4" /> Add Fuel Log
         </button>
@@ -138,10 +138,10 @@ export default function FuelList() {
                   <stop offset="95%" stopColor="#0061ff" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="month" stroke="#737687" fontSize={11} tickLine={false} />
-              <YAxis stroke="#737687" fontSize={11} tickLine={false} tickFormatter={(v) => formatCurrency(v)} />
-              <Tooltip formatter={(value: any) => [formatCurrency(Number(value)), '']} />
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-outline-variant)" strokeOpacity={0.2} />
+              <XAxis dataKey="month" stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+              <YAxis stroke="var(--color-outline)" fontSize={11} tickLine={false} tickFormatter={(v) => formatCurrency(v)} />
+              <Tooltip contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }} labelStyle={{ color: 'var(--color-on-surface)' }} itemStyle={{ color: 'var(--color-on-surface)' }} formatter={(value: any) => [formatCurrency(Number(value)), '']} />
               <Area type="monotone" dataKey="diesel" stroke="#0061ff" strokeWidth={2} fillOpacity={1} fill="url(#colorDiesel)" name="Diesel Cost" />
             </AreaChart>
           </ResponsiveContainer>
@@ -335,7 +335,7 @@ export default function FuelList() {
               </div>
 
               <div className="flex gap-3 pt-2">
-                <button type="submit" className="flex-1 bg-primary text-white py-2.5 rounded-xl font-medium hover:bg-primary/95 transition-colors">
+                <button type="submit" className="flex-1 bg-primary text-on-primary py-2.5 rounded-xl font-medium hover:bg-primary/95 transition-colors">
                   Record Log
                 </button>
                 <button type="button" onClick={() => setShowModal(false)} className="flex-1 bg-surface-container-lowest border border-outline-variant text-on-surface py-2.5 rounded-xl font-medium hover:bg-surface-container-low transition-colors">

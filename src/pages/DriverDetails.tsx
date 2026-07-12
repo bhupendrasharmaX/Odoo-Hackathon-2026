@@ -19,7 +19,7 @@ export default function DriverDetails() {
     return (
       <div className="text-center py-16">
         <h2 className="text-xl font-bold text-on-surface">Driver Profile Not Found</h2>
-        <button onClick={() => navigate('/drivers')} className="mt-4 px-4 py-2 bg-primary text-white rounded-xl">
+        <button onClick={() => navigate('/drivers')} className="mt-4 px-4 py-2 bg-primary text-on-primary rounded-xl">
           Back to Driver List
         </button>
       </div>
@@ -54,7 +54,7 @@ export default function DriverDetails() {
           <button onClick={() => alert('Edit profile')} className="flex items-center gap-1.5 px-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs">
             <Edit className="w-4 h-4" /> Edit Profile
           </button>
-          <button onClick={() => navigate('/trips/create')} className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors shadow-xs">
+          <button onClick={() => navigate('/trips/create')} className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-on-primary rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors shadow-xs">
             <Route className="w-4 h-4" /> Assign Trip
           </button>
         </div>
@@ -132,10 +132,10 @@ export default function DriverDetails() {
             <div className="flex-1 min-h-0">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData.tripsPerMonth} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="month" stroke="#737687" fontSize={11} tickLine={false} />
-                  <YAxis stroke="#737687" fontSize={11} tickLine={false} />
-                  <Tooltip />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-outline-variant)" strokeOpacity={0.2} />
+                  <XAxis dataKey="month" stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+                  <YAxis stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+                  <Tooltip contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }} labelStyle={{ color: 'var(--color-on-surface)' }} itemStyle={{ color: 'var(--color-on-surface)' }} />
                   <Legend wrapperStyle={{ fontSize: 11 }} />
                   <Bar dataKey="completed" fill="#0061ff" radius={[4, 4, 0, 0]} name="Completed" />
                   <Bar dataKey="cancelled" fill="#ba1a1a" radius={[4, 4, 0, 0]} name="Cancelled" />

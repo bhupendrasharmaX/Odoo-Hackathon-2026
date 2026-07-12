@@ -65,7 +65,7 @@ export default function Dashboard() {
           </button>
           <button 
             onClick={() => navigate('/trips/create')}
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors shadow-xs"
+            className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-on-primary rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors shadow-xs"
           >
             <Route className="w-4 h-4" /> Create Trip
           </button>
@@ -167,13 +167,18 @@ export default function Dashboard() {
                     <stop offset="95%" stopColor="#ba1a1a" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#dae2fd/40" />
-                <XAxis dataKey="month" stroke="#737687" fontSize={11} tickLine={false} axisLine={false} />
-                <YAxis stroke="#737687" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v) => formatCurrency(v)} />
-                <Tooltip formatter={(value: any) => [formatCurrency(Number(value)), '']} labelStyle={{ fontSize: 12, fontWeight: 'bold' }} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-outline-variant)" strokeOpacity={0.2} />
+                <XAxis dataKey="month" stroke="var(--color-outline)" fontSize={11} tickLine={false} axisLine={false} />
+                <YAxis stroke="var(--color-outline)" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v) => formatCurrency(v)} />
+                <Tooltip 
+                  contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }}
+                  labelStyle={{ color: 'var(--color-on-surface)', fontSize: 12, fontWeight: 'bold' }}
+                  itemStyle={{ color: 'var(--color-on-surface)' }}
+                  formatter={(value: any) => [formatCurrency(Number(value)), '']}
+                />
                 <Area type="monotone" dataKey="revenue" stroke="#0061ff" strokeWidth={2.5} fillOpacity={1} fill="url(#colorRev)" name="Revenue" />
                 <Area type="monotone" dataKey="expense" stroke="#ba1a1a" strokeWidth={2} fillOpacity={1} fill="url(#colorExp)" name="Expenses" />
-                <Legend iconType="circle" wrapperStyle={{ fontSize: 12, marginTop: 10 }} />
+                <Legend iconType="circle" wrapperStyle={{ fontSize: 12, marginTop: 10, color: 'var(--color-on-surface)' }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -201,8 +206,12 @@ export default function Dashboard() {
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value: any) => [value, 'Vehicles']} />
-                <Legend layout="horizontal" verticalAlign="bottom" align="center" iconType="circle" wrapperStyle={{ fontSize: 12 }} />
+                <Tooltip 
+                  contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }}
+                  itemStyle={{ color: 'var(--color-on-surface)' }}
+                  formatter={(value: any) => [value, 'Vehicles']}
+                />
+                <Legend layout="horizontal" verticalAlign="bottom" align="center" iconType="circle" wrapperStyle={{ fontSize: 12, color: 'var(--color-on-surface)' }} />
               </PieChart>
             </ResponsiveContainer>
             <div className="absolute top-[37%] flex flex-col items-center">

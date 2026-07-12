@@ -101,7 +101,7 @@ export default function ExpenseList() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors self-start sm:self-auto shadow-xs"
+          className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-on-primary rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors self-start sm:self-auto shadow-xs"
         >
           <Plus className="w-4 h-4" /> Add Expense
         </button>
@@ -154,7 +154,7 @@ export default function ExpenseList() {
                     <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value: any) => [formatCurrency(Number(value)), 'Amount']} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }} labelStyle={{ color: 'var(--color-on-surface)' }} itemStyle={{ color: 'var(--color-on-surface)' }} formatter={(value: any) => [formatCurrency(Number(value)), 'Amount']} />
                 <Legend iconType="circle" wrapperStyle={{ fontSize: 11 }} />
               </PieChart>
             </ResponsiveContainer>
@@ -167,10 +167,10 @@ export default function ExpenseList() {
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData.revenueVsExpense} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="month" stroke="#737687" fontSize={11} tickLine={false} />
-                <YAxis stroke="#737687" fontSize={11} tickLine={false} tickFormatter={(v) => formatCurrency(v)} />
-                <Tooltip formatter={(value: any) => [formatCurrency(Number(value)), '']} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-outline-variant)" strokeOpacity={0.2} />
+                <XAxis dataKey="month" stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+                <YAxis stroke="var(--color-outline)" fontSize={11} tickLine={false} tickFormatter={(v) => formatCurrency(v)} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }} labelStyle={{ color: 'var(--color-on-surface)' }} itemStyle={{ color: 'var(--color-on-surface)' }} formatter={(value: any) => [formatCurrency(Number(value)), '']} />
                 <Line type="monotone" dataKey="expense" stroke="#ba1a1a" strokeWidth={2.5} activeDot={{ r: 6 }} name="Monthly Cost" />
               </LineChart>
             </ResponsiveContainer>
@@ -343,7 +343,7 @@ export default function ExpenseList() {
               </div>
 
               <div className="flex gap-3 pt-2">
-                <button type="submit" className="flex-1 bg-primary text-white py-2.5 rounded-xl font-medium hover:bg-primary/95 transition-colors">
+                <button type="submit" className="flex-1 bg-primary text-on-primary py-2.5 rounded-xl font-medium hover:bg-primary/95 transition-colors">
                   Submit Expense
                 </button>
                 <button type="button" onClick={() => setShowModal(false)} className="flex-1 bg-surface-container-lowest border border-outline-variant text-on-surface py-2.5 rounded-xl font-medium hover:bg-surface-container-low transition-colors">

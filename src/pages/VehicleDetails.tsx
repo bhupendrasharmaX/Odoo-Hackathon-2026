@@ -19,7 +19,7 @@ export default function VehicleDetails() {
       <div className="text-center py-16">
         <h2 className="text-xl font-bold text-on-surface">Vehicle Not Found</h2>
         <p className="text-sm text-on-surface-variant mt-2">The vehicle with ID {id} does not exist or has been deleted.</p>
-        <button onClick={() => navigate('/vehicles')} className="mt-4 px-4 py-2 bg-primary text-white rounded-xl">
+        <button onClick={() => navigate('/vehicles')} className="mt-4 px-4 py-2 bg-primary text-on-primary rounded-xl">
           Back to Fleet List
         </button>
       </div>
