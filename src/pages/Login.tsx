@@ -215,7 +215,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-all shadow-md shadow-primary/10 disabled:opacity-75 disabled:cursor-not-allowed group mt-2"
+              className="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-3 rounded-xl font-medium hover:bg-primary/95 transition-all shadow-md shadow-primary/10 disabled:opacity-75 disabled:cursor-not-allowed group mt-2"
             >
               {isLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -287,7 +287,7 @@ export default function Login() {
                 type="button"
                 onClick={handleRequestOtp}
                 disabled={isLoading}
-                className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-all shadow-md shadow-primary/10 disabled:opacity-75"
+                className="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-3 rounded-xl font-medium hover:bg-primary/95 transition-all shadow-md shadow-primary/10 disabled:opacity-75"
               >
                 {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Request OTP Code'}
               </button>
@@ -296,7 +296,7 @@ export default function Login() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-all shadow-md shadow-primary/10 disabled:opacity-75"
+                  className="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-3 rounded-xl font-medium hover:bg-primary/95 transition-all shadow-md shadow-primary/10 disabled:opacity-75"
                 >
                   {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Verify & Login'}
                 </button>

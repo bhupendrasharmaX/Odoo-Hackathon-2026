@@ -216,7 +216,7 @@ export default function VehicleAdd() {
           <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-xs space-y-3">
             <button
               type="submit"
-              className="w-full bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors shadow-xs"
+              className="w-full bg-primary text-on-primary py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors shadow-xs"
             >
               Save Vehicle
             </button>

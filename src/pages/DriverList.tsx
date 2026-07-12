@@ -42,7 +42,7 @@ export default function DriverList() {
         </div>
         <button
           onClick={() => navigate('/drivers/add')}
-          className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors self-start sm:self-auto shadow-xs"
+          className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-on-primary rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors self-start sm:self-auto shadow-xs"
         >
           <Plus className="w-4 h-4" /> Register Driver
         </button>

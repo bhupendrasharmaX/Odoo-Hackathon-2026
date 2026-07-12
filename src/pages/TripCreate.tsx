@@ -97,7 +97,7 @@ export default function TripCreate() {
         ].map((s) => (
           <div key={s.num} className="flex items-center gap-2">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
-              step === s.num ? 'bg-primary text-white' : step > s.num ? 'bg-green-100 text-green-700' : 'bg-surface-container text-on-surface-variant'
+              step === s.num ? 'bg-primary text-on-primary' : step > s.num ? 'bg-green-100 text-green-700' : 'bg-surface-container text-on-surface-variant'
             }`}>
               {step > s.num ? '✓' : s.num}
             </div>
@@ -146,7 +146,7 @@ export default function TripCreate() {
               </div>
             </div>
 
-            <button type="submit" className="w-full bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors mt-2 flex items-center justify-center gap-1">
+            <button type="submit" className="w-full bg-primary text-on-primary py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors mt-2 flex items-center justify-center gap-1">
               Select Assets <ChevronRight className="w-4 h-4" />
             </button>
           </form>
@@ -188,7 +188,7 @@ export default function TripCreate() {
               </div>
             </div>
 
-            <button type="submit" className="w-full bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors mt-2 flex items-center justify-center gap-1">
+            <button type="submit" className="w-full bg-primary text-on-primary py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors mt-2 flex items-center justify-center gap-1">
               Add Cargo & Billing <ChevronRight className="w-4 h-4" />
             </button>
           </form>
@@ -247,7 +247,7 @@ export default function TripCreate() {
               </div>
             </div>
 
-            <button type="submit" className="w-full bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors mt-2 flex items-center justify-center gap-1">
+            <button type="submit" className="w-full bg-primary text-on-primary py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors mt-2 flex items-center justify-center gap-1">
               Review Dispatch Summary <ChevronRight className="w-4 h-4" />
             </button>
           </form>
@@ -289,7 +289,7 @@ export default function TripCreate() {
             <button 
               type="button" 
               onClick={handleDispatch}
-              className="w-full bg-primary text-white py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors mt-2"
+              className="w-full bg-primary text-on-primary py-3 rounded-xl font-medium hover:bg-primary/95 transition-colors mt-2"
             >
               Confirm Dispatch Shipment
             </button>

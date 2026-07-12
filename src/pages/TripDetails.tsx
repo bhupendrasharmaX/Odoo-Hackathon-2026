@@ -16,7 +16,7 @@ export default function TripDetails() {
     return (
       <div className="text-center py-16">
         <h2 className="text-xl font-bold text-on-surface">Trip Shipment Not Found</h2>
-        <button onClick={() => navigate('/trips')} className="mt-4 px-4 py-2 bg-primary text-white rounded-xl">
+        <button onClick={() => navigate('/trips')} className="mt-4 px-4 py-2 bg-primary text-on-primary rounded-xl">
           Back to Trip Board
         </button>
       </div>
@@ -75,7 +75,7 @@ export default function TripDetails() {
           {steps.map((st, idx) => (
             <div key={idx} className="flex flex-col items-center text-center relative z-10">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${
-                st.done ? 'bg-green-100 text-green-700' : st.active ? 'bg-primary text-white animate-pulse' : 'bg-surface-container text-on-surface-variant'
+                st.done ? 'bg-green-100 text-green-700' : st.active ? 'bg-primary text-on-primary animate-pulse' : 'bg-surface-container text-on-surface-variant'
               }`}>
                 {st.done ? '✓' : idx + 1}
               </div>

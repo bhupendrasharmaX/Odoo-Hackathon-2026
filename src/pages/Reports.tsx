@@ -22,7 +22,7 @@ export default function Reports() {
           <button onClick={() => alert('CSV exported')} className="flex items-center gap-1.5 px-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors shadow-xs">
             <Download className="w-4 h-4 text-on-surface-variant" /> Export CSV
           </button>
-          <button onClick={() => alert('PDF report downloaded')} className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors shadow-xs">
+          <button onClick={() => alert('PDF report downloaded')} className="flex items-center gap-1.5 px-4 py-2.5 bg-primary text-on-primary rounded-xl text-sm font-medium hover:bg-primary/95 transition-colors shadow-xs">
             <BarChart3 className="w-4 h-4" /> Download PDF Report
           </button>
         </div>
@@ -72,13 +72,13 @@ export default function Reports() {
                     <stop offset="95%" stopColor="#0061ff" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="month" stroke="#737687" fontSize={11} tickLine={false} />
-                <YAxis stroke="#737687" fontSize={11} tickLine={false} tickFormatter={(v) => formatCurrency(v)} />
-                <Tooltip formatter={(value: any) => [formatCurrency(Number(value)), '']} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-outline-variant)" strokeOpacity={0.2} />
+                <XAxis dataKey="month" stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+                <YAxis stroke="var(--color-outline)" fontSize={11} tickLine={false} tickFormatter={(v) => formatCurrency(v)} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }} labelStyle={{ color: 'var(--color-on-surface)' }} itemStyle={{ color: 'var(--color-on-surface)' }} formatter={(value: any) => [formatCurrency(Number(value)), '']} />
                 <Area type="monotone" dataKey="revenue" stroke="#0061ff" strokeWidth={2.5} fillOpacity={1} fill="url(#repRev)" name="Revenue" />
                 <Area type="monotone" dataKey="expense" stroke="#ba1a1a" strokeWidth={2} fillOpacity={0.05} name="Expense" />
-                <Legend wrapperStyle={{ fontSize: 11 }} />
+                <Legend wrapperStyle={{ fontSize: 11, color: 'var(--color-on-surface)' }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -90,13 +90,13 @@ export default function Reports() {
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData.tripsPerMonth} margin={{ top: 5, right: 10, left: -25, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="month" stroke="#737687" fontSize={11} tickLine={false} />
-                <YAxis stroke="#737687" fontSize={11} tickLine={false} />
-                <Tooltip />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-outline-variant)" strokeOpacity={0.2} />
+                <XAxis dataKey="month" stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+                <YAxis stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }} labelStyle={{ color: 'var(--color-on-surface)' }} itemStyle={{ color: 'var(--color-on-surface)' }} />
                 <Bar dataKey="completed" fill="#006c49" radius={[4, 4, 0, 0]} name="Completed" />
                 <Bar dataKey="cancelled" fill="#ba1a1a" radius={[4, 4, 0, 0]} name="Cancelled" />
-                <Legend wrapperStyle={{ fontSize: 11 }} />
+                <Legend wrapperStyle={{ fontSize: 11, color: 'var(--color-on-surface)' }} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -108,12 +108,12 @@ export default function Reports() {
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={chartData.fuelTrend} margin={{ top: 5, right: 10, left: -25, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="month" stroke="#737687" fontSize={11} tickLine={false} />
-                <YAxis stroke="#737687" fontSize={11} tickLine={false} tickFormatter={(v) => formatCurrency(v)} />
-                <Tooltip formatter={(value: any) => [formatCurrency(Number(value)), '']} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-outline-variant)" strokeOpacity={0.2} />
+                <XAxis dataKey="month" stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+                <YAxis stroke="var(--color-outline)" fontSize={11} tickLine={false} tickFormatter={(v) => formatCurrency(v)} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }} labelStyle={{ color: 'var(--color-on-surface)' }} itemStyle={{ color: 'var(--color-on-surface)' }} formatter={(value: any) => [formatCurrency(Number(value)), '']} />
                 <Area type="monotone" dataKey="diesel" stroke="#f59e0b" fill="#f59e0b" fillOpacity={0.1} strokeWidth={2} name="Diesel Cost" />
-                <Legend wrapperStyle={{ fontSize: 11 }} />
+                <Legend wrapperStyle={{ fontSize: 11, color: 'var(--color-on-surface)' }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -125,12 +125,12 @@ export default function Reports() {
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData.revenueVsExpense} margin={{ top: 5, right: 10, left: -25, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="month" stroke="#737687" fontSize={11} tickLine={false} />
-                <YAxis stroke="#737687" fontSize={11} tickLine={false} />
-                <Tooltip />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-outline-variant)" strokeOpacity={0.2} />
+                <XAxis dataKey="month" stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+                <YAxis stroke="var(--color-outline)" fontSize={11} tickLine={false} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--color-surface-container-high)', borderColor: 'var(--color-outline-variant)', borderRadius: '12px' }} labelStyle={{ color: 'var(--color-on-surface)' }} itemStyle={{ color: 'var(--color-on-surface)' }} />
                 <Line type="monotone" dataKey="revenue" stroke="#004bca" strokeWidth={2} name="Operating Index" />
-                <Legend wrapperStyle={{ fontSize: 11 }} />
+                <Legend wrapperStyle={{ fontSize: 11, color: 'var(--color-on-surface)' }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
