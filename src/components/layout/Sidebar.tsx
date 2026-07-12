@@ -24,7 +24,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={`hidden md:flex flex-col h-screen sticky top-0 bg-white border-r border-outline-variant transition-all duration-300 z-50 ${
+      className={`hidden md:flex flex-col h-screen sticky top-0 bg-surface-container-lowest border-r border-outline-variant transition-all duration-300 z-50 ${
         collapsed ? 'w-[72px]' : 'w-64'
       }`}
     >
@@ -92,7 +92,7 @@ export default function Sidebar() {
         )}
         <button
           onClick={() => navigate('/')}
-          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-on-surface-variant hover:bg-red-50 hover:text-red-600 transition-colors ${
+          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-on-surface-variant hover:bg-red-50 dark:hover:bg-red-950 hover:text-red-600 transition-colors ${
             collapsed ? 'justify-center' : ''
           }`}
         >

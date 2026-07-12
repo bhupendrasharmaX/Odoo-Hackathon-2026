@@ -7,6 +7,7 @@ import maintenanceRoutes from './maintenance.routes.js';
 import fuelRoutes from './fuel.routes.js';
 import expenseRoutes from './expense.routes.js';
 import reportRoutes from './report.routes.js';
+import notificationRoutes from './notification.routes.js';
 import { sendSuccess } from '../utils/response.js';
 
 const router = Router();
@@ -24,5 +25,6 @@ router.use('/maintenance', maintenanceRoutes);
 router.use('/fuel', fuelRoutes);
 router.use('/expenses', expenseRoutes);
 router.use('/reports', reportRoutes);
+router.use('/notifications', notificationRoutes);
 
 export default router;
