@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Animated Header -->
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=35&pause=1000&color=6366F1&center=true&vCenter=true&width=700&lines=🚛+TransitOps;Smart+Transport+Operations;Odoo+Hackathon+2026+🏆" alt="TransitOps" />
+<img src="public/logo.jpeg" alt="TransportAI Logo" width="500" />
 
 <br/>
 
