@@ -24,7 +24,7 @@ import Settings from './pages/Settings';
 import UserProfile from './pages/UserProfile';
 
 export default function App() {
-  const basename = import.meta.env.DEV ? '/' : '/Odoo-Hackathon-2026';
+  const basename = '/';
   return (
     <BrowserRouter basename={basename}>
       <Routes>

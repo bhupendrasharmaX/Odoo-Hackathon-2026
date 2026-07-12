@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: process.env.NODE_ENV === 'production' ? '/Odoo-Hackathon-2026/' : '/',
+  base: '/',
   resolve: {
     alias: { '@': '/src' },
   },
